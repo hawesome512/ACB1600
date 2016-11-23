@@ -8,18 +8,29 @@
             <RowDefinition Height="35"/>
             <RowDefinition Height="35"/>
             <RowDefinition Height="35*"/>
+            <RowDefinition Height="35"/>
         </Grid.RowDefinitions>
         <Border BorderBrush="SeaGreen" BorderThickness="1" Grid.RowSpan="4"></Border>
-        <Grid Name="grid_content" Grid.Row="3" Margin="1,0,1,1" Height="3000">
-            <Grid.Background>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="#FFFDFBFA" Offset="0"/>
-                    <GradientStop Color="#FFD81654" Offset="1"/>
-                    <GradientStop Color="#FF41A624" Offset="0.484"/>
-                    <GradientStop Color="#FF2E87C5" Offset="0.706"/>
-                    <GradientStop Color="#FFE0B080" Offset="0.259"/>
-                </LinearGradientBrush>
-            </Grid.Background>
+        <Grid Name="grid_content" Grid.Row="2" Margin="1,0,1,1" Background="#FFEAEFF1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+            <Border Grid.Column="3" Grid.ColumnSpan="3" BorderBrush="SeaGreen" BorderThickness="1,0"/>
+            <Border Grid.Column="9" Grid.ColumnSpan="3" BorderBrush="SeaGreen" BorderThickness="1,0"/>
         </Grid>
         <Grid Grid.Row="0">
             <Grid.Background>
@@ -32,9 +43,10 @@
                 <local:ImageButton x:Name="btn_min" Width="27" Height="26" VerticalAlignment="Top"  ImgPath="/Images/最小化.png" Template="{StaticResource ImageButtonTemplate}" Click="btn_min_Click"/>
             </StackPanel>
         </Grid>
-        <Grid Name="grid_rbs" Grid.Row="1" Background="#FF5A5A5A">
+        <Grid Name="grid_rbs" Margin="1,0,1,0" Grid.Row="1" Background="#FFFF6501">
             <Rectangle Name="rect_right" Height="35"/>
             <Rectangle Name="rect_left" Width="30" Height="35" HorizontalAlignment="Left"/>
         </Grid>
+        <Grid Name="grid_bottom" Grid.Row="3" Background="#FF5A5A5A" Margin="1"/>
     </Grid>
 </Window>

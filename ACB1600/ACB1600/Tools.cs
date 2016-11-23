@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Media;
+using System.Configuration;
 
 namespace ACB1600
 {
@@ -64,6 +65,29 @@ namespace ACB1600
                         }
 
                         return foundChild;
+                }
+
+                public static bool isOne(int raw, int index)
+                {
+                        raw = (int)(raw >> index & 1);
+                        return raw == 1 ? true : false;
+                }
+
+                public static int BitSet(int bt, int index, int para)
+                {
+                        return para == 1 ? (bt | (0x1 << index)) : (bt & ~(0x1 << index));
+                }
+
+                public static string GetConfig(string key)
+                {
+                        //return ConfigurationSettings.AppSettings[key];
+                        return ConfigurationManager.AppSettings[key];
+                }
+                public static void SetConfig(string key, string value)
+                {
+                        Configuration cfa = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+                        cfa.AppSettings.Settings[key].Value = value;
+                        cfa.Save();
                 }
         }
 }
