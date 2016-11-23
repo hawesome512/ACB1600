@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using System.Windows.Media.Animation;
 using System.Xml;
 using System.Text.RegularExpressions;
+using Hawesome;
 
 namespace ACB1600
 {
@@ -120,7 +121,7 @@ namespace ACB1600
                         label.Content = title;
                         label.Height = rowHeight;
                         label.HorizontalContentAlignment = HorizontalAlignment.Center;
-                        label.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#FF9A9A9A");
+                        label.Background = Tools.GetBrush("#FF9A9A9A");
                         label.Foreground = Brushes.White;
                         label.VerticalAlignment = VerticalAlignment.Top;
                         label.Margin = new Thickness(0, index / 5 * rowHeight, 0, 0);
@@ -225,7 +226,7 @@ namespace ACB1600
                                         {
                                                 for (int i = 0; i < count; i++)
                                                 {
-                                                        TextBox tbox = Tools.FindChild<TextBox>(grid_content, "A" + zone[i].Address);
+                                                        TextBox tbox = Tools.GetChild<TextBox>(grid_content, "A" + zone[i].Address);
                                                         byte[] source = new byte[] { rcv[2 * i], rcv[2 * i + 1] };
                                                         tbox.Text = typeof(ComConverter).GetMethod("CvtR" + zone[i].ShowType).Invoke(cvt, new object[] { source, zone[i].Extra }).ToString();
                                                 }

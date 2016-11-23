@@ -16,3 +16,5 @@ E:\My Work\acb1600\ACB1600\ACB1600\obj\Debug\ACB1600.pdb
 E:\My Work\acb1600\ACB1600\ACB1600\obj\Debug\App.baml
 E:\My Work\acb1600\ACB1600\ACB1600\bin\Debug\ACB1600.xml
 E:\My Work\acb1600\ACB1600\ACB1600\obj\Debug\ACB1600_Content.g.cs
+E:\My Work\acb1600\ACB1600\ACB1600\bin\Debug\Hawesome.dll
+E:\My Work\acb1600\ACB1600\ACB1600\bin\Debug\Hawesome.pdb
