@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ACB1600", "ACB1600\ACB1600.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Excel2Xml", "..\..\MICCom\Excel2Xml\Excel2Xml.csproj", "{4EADF09F-12A5-4EF4-8736-C49287158C08}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chart", "Chart\Chart.csproj", "{F4816BD7-DB10-464D-BE1B-133B72C10ECD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,10 @@ Global
 		{4EADF09F-12A5-4EF4-8736-C49287158C08}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4EADF09F-12A5-4EF4-8736-C49287158C08}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4EADF09F-12A5-4EF4-8736-C49287158C08}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4816BD7-DB10-464D-BE1B-133B72C10ECD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4816BD7-DB10-464D-BE1B-133B72C10ECD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4816BD7-DB10-464D-BE1B-133B72C10ECD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4816BD7-DB10-464D-BE1B-133B72C10ECD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

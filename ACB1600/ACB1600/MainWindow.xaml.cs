@@ -64,7 +64,6 @@ namespace ACB1600
                         doc.Load("ACB1600.xml");
                         XmlElement device = doc.DocumentElement;
                         int index = 0;
-
                         rbList = new List<RadioButton>();
                         zoneList = new List<List<Node>>();
                         foreach (XmlElement xe in device.ChildNodes)
@@ -91,7 +90,7 @@ namespace ACB1600
                                         }
                                         addItemLabel(node.Name, index, true);
                                         bool hasUnit = node.Unit != "/";
-                                        addItemBox(node.Address, index,hasUnit);
+                                        addItemTextBox(node.Address, index, node);
                                         if (hasUnit)
                                         {
                                                 addItemLabel(node.Unit, index, false);
@@ -152,21 +151,77 @@ namespace ACB1600
                         grid_content.Children.Add(label);
                 }
 
-                void addItemBox(int address, int index,bool hasUnit)
+                void addItemTextBox(int address, int index, Node node)
                 {
-                        TextBox tbox = new TextBox();
-                        //删除Name命名规则中的非法字符
-                        tbox.Name = "A" + address;
+                        string[] items = node.Extra.Split('_');
+                        bool useCbox = (node.NodeAuthority != Authority.R) && items.Length > 1;
+                        Control box = useCbox ? new ComboBox() as Control : new TextBox() as Control;
+                        if (useCbox)
+                        {
+                                (box as ComboBox).ItemsSource = items.Skip(1).ToArray();
+                        }
+                        box.Name = "A" + address;
+                        box.Tag = node;
                         //取值0.8*，使行间留白，上下各留白0.1*，如下Margin.Top
-                        tbox.Height = 0.8 * rowHeight;
-                        tbox.VerticalContentAlignment = VerticalAlignment.Center;
-                        tbox.HorizontalContentAlignment = HorizontalAlignment.Center;
-                        tbox.VerticalAlignment = VerticalAlignment.Top;
-                        double right = hasUnit ? 0 : 10;
-                        tbox.Margin = new Thickness(0, index / 5 * rowHeight + 0.1 * rowHeight, right, 0);
-                        Grid.SetColumn(tbox, index % 5 * 3 + 1);
-                        Grid.SetColumnSpan(tbox, hasUnit ? 1 : 2);
-                        grid_content.Children.Add(tbox);
+                        box.Height = 0.8 * rowHeight;
+                        box.VerticalContentAlignment = VerticalAlignment.Center;
+                        box.HorizontalContentAlignment = HorizontalAlignment.Center;
+                        box.VerticalAlignment = VerticalAlignment.Top;
+                        double right = node.Unit != "/" ? 0 : 10;
+                        box.Margin = new Thickness(0, index / 5 * rowHeight + 0.1 * rowHeight, right, 0);
+                        Grid.SetColumn(box, index % 5 * 3 + 1);
+                        Grid.SetColumnSpan(box, node.Unit != "/" ? 1 : 2);
+                        grid_content.Children.Add(box);
+                        if (node.ShowType == 3 || node.ShowType == 11)
+                        {
+                                box.MouseDoubleClick += tbox_MouseDoubleClick;
+                                box.BorderBrush = Tools.GetBrush("#FFFF6501");
+                                box.BorderThickness = new Thickness(2);
+                        }
+                        if (node.NodeAuthority == Authority.RW)
+                        {
+                                box.GotFocus += tbox_GotFocus;
+                        }
+                }
+
+                void tbox_GotFocus(object sender, RoutedEventArgs e)
+                {
+                        Control box = sender as Control;
+                        Point p = box.TranslatePoint(new Point(), grid_content);
+                        btn_write.Margin = new Thickness(p.X + box.ActualWidth - 1, p.Y, 0, 0);
+                        btn_write.Visibility = Visibility.Visible;
+                        btn_write.Tag = box;
+                }
+
+                void tbox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+                {
+                        detail.Visibility = Visibility.Visible;
+                        Control box = sender as Control;
+                        Node node = box.Tag as Node;
+                        Point p = box.TranslatePoint(new Point(), grid_content);
+                        Point p0 = box.TranslatePoint(new Point(), this);
+                        if (p0.Y <= this.Height / 2)
+                        {
+                                detail.Margin = new Thickness(0, p.Y + rowHeight * 0.8, 0, 0);
+                                detail.img_top.Margin = new Thickness(p.X + box.ActualWidth / 2 - detail.img_top.Width / 2, 0, 0, 0);
+                                detail.img_top.Visibility = Visibility.Visible;
+                                detail.img_bottom.Visibility = Visibility.Hidden;
+                        }
+                        else
+                        {
+                                detail.Margin = new Thickness(0, p.Y - detail.Height, 0, 0);
+                                detail.img_bottom.Margin = new Thickness(p.X + box.ActualWidth / 2 - detail.img_bottom.Width / 2, 0, 0, 0);
+                                detail.img_bottom.Visibility = Visibility.Visible;
+                                detail.img_top.Visibility = Visibility.Hidden;
+                        }
+                        if (node.ShowType == 11)
+                        {
+                                read(node.Address, int.Parse(node.Extra), true);
+                        }
+                        else
+                        {
+                                detail.showSwitch(node.Extra, Convert.ToInt32(AutoBox.getText(box), 16));
+                        }
                 }
 
                 private void btn_close_Click(object sender, RoutedEventArgs e)
@@ -202,33 +257,43 @@ namespace ACB1600
                         int height = Convert.ToInt32(rb.Tag) / 5 * rowHeight;
                         animateMove(height);
                         int rbIndex = rbList.FindIndex(r => r.IsChecked == true);
-                        readZoneByIndex(rbIndex);
+                        List<Node> zone = zoneList[rbIndex];
+                        read(zone[0].Address, zone.Count);
                 }
 
-                private void readZoneByIndex(int index)
+                private void read(int address, int length, bool readArray = false)
                 {
                         Task.Factory.StartNew(() =>
                         {
-                                List<Node> zone = zoneList[index];
-                                int address = zone[0].Address;
-                                int count = zone.Count;
                                 byte[] snd = new byte[6];
                                 snd[0] = comAddress;
                                 snd[1] = 0x3;
                                 snd[2] = (byte)(address / 256);
                                 snd[3] = (byte)(address % 256);
-                                snd[4] = (byte)(count / 256);
-                                snd[5] = (byte)(count % 256);
+                                snd[4] = (byte)(length / 256);
+                                snd[5] = (byte)(length % 256);
                                 byte[] rcv = com.Execute(snd);
-                                if (rcv.Length == count * 2)
+                                if (rcv.Length == length * 2)
                                 {
                                         this.Dispatcher.Invoke(new Action(() =>
                                         {
-                                                for (int i = 0; i < count; i++)
+                                                if (readArray)
                                                 {
-                                                        TextBox tbox = Tools.GetChild<TextBox>(grid_content, "A" + zone[i].Address);
-                                                        byte[] source = new byte[] { rcv[2 * i], rcv[2 * i + 1] };
-                                                        tbox.Text = typeof(ComConverter).GetMethod("CvtR" + zone[i].ShowType).Invoke(cvt, new object[] { source, zone[i].Extra }).ToString();
+                                                        Control tbox = Tools.GetChild<Control>(grid_content, "A" + address);
+                                                        Node node = tbox.Tag as Node;
+                                                        int[] data = (int[])typeof(ComConverter).GetMethod("CvtR" + node.ShowType).Invoke(cvt, new object[] { rcv, node.Extra });
+                                                        detail.showChart(data);
+                                                }
+                                                else
+                                                {
+                                                        for (int i = 0; i < length; i++)
+                                                        {
+                                                                Control box = Tools.GetChild<Control>(grid_content, "A" + (address + i));
+                                                                byte[] source = new byte[] { rcv[2 * i], rcv[2 * i + 1] };
+                                                                Node node = box.Tag as Node;
+                                                                string result = typeof(ComConverter).GetMethod("CvtR" + node.ShowType).Invoke(cvt, new object[] { source, node.Extra }).ToString();
+                                                                AutoBox.setText(box, result);
+                                                        }
                                                 }
                                         }));
                                 }
@@ -270,6 +335,22 @@ namespace ACB1600
                         }
                         ThicknessAnimation anim = new ThicknessAnimation(new Thickness(1, -height, 1, 1), new Duration(TimeSpan.FromSeconds(0.3)));
                         grid_content.BeginAnimation(Grid.MarginProperty, anim);
+                }
+
+                private void btn_write_Click(object sender, RoutedEventArgs e)
+                {
+                        Control box = btn_write.Tag as Control;
+                        Node node = box.Tag as Node;
+                        byte[] snd = new byte[9];
+                        snd[0] = comAddress;
+                        snd[1] = 0x10;
+                        snd[2] = (byte)(node.Address / 256);
+                        snd[3] = (byte)(node.Address % 256);
+                        snd[5] = 0x1;
+                        snd[6] = 0x2;
+                        byte[] data = (byte[])typeof(ComConverter).GetMethod("CvtW" + node.ShowType).Invoke(cvt, new object[] { AutoBox.getText(box), node.Extra });
+                        data.CopyTo(snd, 7);
+                        byte[] rcv = com.Execute(snd);
                 }
         }
 }

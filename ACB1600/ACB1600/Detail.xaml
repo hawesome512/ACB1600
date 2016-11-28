@@ -1,0 +1,28 @@
+﻿<UserControl x:Class="ACB1600.Detail"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:ACB1600"
+        xmlns:Chr="clr-namespace:System.Windows.Forms.DataVisualization.Charting;assembly=System.Windows.Forms.DataVisualization"
+        Height="200">
+    <Grid>
+        <Border BorderBrush="SeaGreen" Margin="0,12" BorderThickness="1,2" Background="#FFE9EEF1"></Border>
+        <Image Name="img_top" Height="14" Width="120" HorizontalAlignment="Left" VerticalAlignment="Top" Source="Images/top.png"/>
+        <Image Name="img_bottom" Height="14" Width="120" VerticalAlignment="Bottom" Source="Images/bottom.png"  HorizontalAlignment="Left"/>
+        <local:ImageButton x:Name="btn_close" Width="27" Height="26" Margin="5,14" VerticalAlignment="Top" HorizontalAlignment="Right"  ImgPath="/Images/关闭.png" Template="{StaticResource ImageButtonTemplate}" Click="btn_close_Click"/>
+        <WindowsFormsHost Name="myHost" Margin="0,14,40,14" Visibility="Hidden">
+            <Chr:Chart/>
+        </WindowsFormsHost>
+        <Grid Name="mySwitch" Margin="50" Visibility="Hidden">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+        </Grid>
+    </Grid>
+</UserControl>

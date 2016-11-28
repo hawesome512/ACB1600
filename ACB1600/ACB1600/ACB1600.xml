@@ -133,9 +133,9 @@
       <Name>CircuitCheck_H</Name>
       <Alias>电网状态信息（高位）</Alias>
       <Authority>R</Authority>
-      <ShowType>1</ShowType>
+      <ShowType>3</ShowType>
       <Unit>/</Unit>
-      <Extra>1</Extra>
+      <Extra>过载故障/正常/异常_短路故障/正常/异常_瞬时故障/正常/异常_接地漏电异常/正常/异常_负载监控1/正常/异常_负载监控2/正常/异常_合分闸/分闸/合闸_脱扣故障/正常/异常_触头磨损率/正常/异常_超温/正常/异常_拒动/正常/异常_铁电异常/正常/异常_自诊断异常/正常/异常_电流不平衡/正常/异常_电压不平衡/正常/异常_记录/已读/未读</Extra>
     </Item>
     <Item>
       <Address>1001</Address>
@@ -1369,18 +1369,18 @@
       <Name>Password</Name>
       <Alias>操作控制器权限密码</Alias>
       <Authority>RW</Authority>
-      <ShowType>1</ShowType>
+      <ShowType>0</ShowType>
       <Unit>/</Unit>
-      <Extra>1</Extra>
+      <Extra></Extra>
     </Item>
     <Item>
       <Address>2001</Address>
       <Name>ProtectSwitchH</Name>
       <Alias>各种保护开关(高字)</Alias>
       <Authority>RW</Authority>
-      <ShowType>1</ShowType>
+      <ShowType>3</ShowType>
       <Unit>/</Unit>
-      <Extra>1</Extra>
+      <Extra>过载保护_短路保护_瞬时保护_接地漏电_短路定反时限/定时限/反时限_接地定反时限/定时限/反时限_负载监控_负载监控方式/方式1/方式2_过载热记忆_短路热记忆_N相保护_N相设置/50%/100%_电流不平衡_电压不平衡_过压_欠压</Extra>
     </Item>
     <Item>
       <Address>2002</Address>
@@ -1425,7 +1425,7 @@
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
       <Unit>S</Unit>
-      <Extra>10</Extra>
+      <Extra>10_0.5_1_2_4_8_12_16_20_24</Extra>
     </Item>
     <Item>
       <Address>2007</Address>
@@ -1895,9 +1895,9 @@
       <Name>BusComSet</Name>
       <Alias>通讯设置</Alias>
       <Authority>R</Authority>
-      <ShowType>1</ShowType>
+      <ShowType>2</ShowType>
       <Unit>/</Unit>
-      <Extra>1</Extra>
+      <Extra>0_modbus 本地_1_modbus 远程_2_profibus 本地_3_profibus 远程</Extra>
     </Item>
     <Item>
       <Address>4001</Address>

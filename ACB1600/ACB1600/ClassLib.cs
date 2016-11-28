@@ -48,5 +48,10 @@ namespace ACB1600
                         get;
                         set;
                 }
+                public string Value
+                {
+                        get;
+                        set;
+                }
         }
 }

@@ -41,7 +41,7 @@ namespace ACB1600
                 public string CvtR1(byte[] source, string extra)
                 {
                         int value = source[0] * 256 + source[1];
-                        double factor = double.Parse(extra);
+                        double factor = double.Parse(extra.Split('_')[0]);
                         return (value / factor).ToString();
                 }
                 /// <summary>
@@ -52,7 +52,7 @@ namespace ACB1600
                 /// <returns></returns>
                 public byte[] CvtW1(string value, string extra)
                 {
-                        double factor = double.Parse(extra);
+                        double factor = double.Parse(extra.Split('_')[0]);
                         double data1=double.Parse(value);
                         int data = Convert.ToInt32(data1 * factor);
                         byte[] bts = new byte[2];
@@ -114,6 +114,22 @@ namespace ACB1600
                         bts[0] = (byte)(data / 256);
                         bts[1] = (byte)(data % 256);
                         return bts;
+                }
+
+                /// <summary>
+                /// 数组模式
+                /// </summary>
+                /// <param name="source">源byte[]</param>
+                /// <param name="extra"></param>
+                /// <returns></returns>
+                public int[] CvtR11(byte[] source, string extra)
+                {
+                        int[] result = new int[source.Length / 2];
+                        for (int i = 0; i < result.Length; i++)
+                        {
+                                result[i] = source[2 * i] * 256 + source[2 * i + 1];
+                        }
+                        return result;
                 }
 
                 /// <summary>
