@@ -3,6 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:ACB1600"
         Title="MainWindow" Height="800" Width="1000" WindowStartupLocation="CenterScreen" WindowStyle="None"   MouseLeftButtonDown="Window_MouseLeftButtonDown" MouseWheel="Window_MouseWheel" FontSize="16">
+    <Window.Resources>
+        <local:String2Brush x:Key="String2Brush"/>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="35"/>
@@ -48,7 +51,18 @@
         <Grid Name="grid_rbs" Margin="1,0,1,0" Grid.Row="1" Background="#FFFF6501">
             <Rectangle Name="rect_right" Height="35"/>
             <Rectangle Name="rect_left" Width="30" Height="35" HorizontalAlignment="Left"/>
+            <StackPanel Name="panel_setting" Margin="0,0,-300,0" Height="35" HorizontalAlignment="Right" Orientation="Horizontal" FlowDirection="RightToLeft" Panel.ZIndex="100" Background="{Binding Fill, ElementName=rect_right}" MouseEnter="StackPanel_MouseEnter" MouseLeave="StackPanel_MouseLeave">
+                <ComboBox Name="cbox_com" Width="100"/>
+                <Label Content="串口" Foreground="White"/>
+                <TextBox Name="tbox_address" Width="35" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">1</TextBox>
+                <Label Content="地址" Foreground="White"/>
+                <TextBox Name="tbox_repeat" Width="35" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">1</TextBox>
+                <Label Content="重复" Foreground="White"/>
+                <Image Name="img_setting" Source="Images/previous.png" Height="35"/>
+            </StackPanel>
         </Grid>
-        <Grid Name="grid_bottom" Grid.Row="3" Background="#FF5A5A5A" Margin="1"/>
+        <Grid Name="grid_bottom" Grid.Row="3" Background="#FF5A5A5A" Margin="1">
+            <Label Name="lbl_msg" Foreground="{Binding Content, Converter={StaticResource String2Brush}, ElementName=lbl_msg}" Margin="10,0,0,0"></Label>
+        </Grid>
     </Grid>
 </Window>

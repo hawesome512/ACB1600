@@ -45,3 +45,4 @@ E:\My Work\acb1600\ACB1600\ACB1600\obj\Debug\ACB1600.csproj.GenerateResource.Cac
 E:\My Work\acb1600\ACB1600\ACB1600\obj\Debug\ACB1600.exe
 E:\My Work\acb1600\ACB1600\ACB1600\obj\Debug\ACB1600.pdb
 E:\My Work\acb1600\ACB1600\ACB1600\obj\Debug\ACB1600.csprojResolveAssemblyReference.cache
+E:\My Work\acb1600\ACB1600\ACB1600\obj\Debug\ACB1600.MsgBox.resources

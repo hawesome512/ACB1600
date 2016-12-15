@@ -1,17 +1,17 @@
 <Device Type="ACB1600">
-  <Zone length="14" address="0000" alias="设备参数">
+  <Zone length="14" address="0000" alias="设备参数(0000)">
     <Item>
       <Address>0000</Address>
-      <Name>DeviceCode</Name>
+      <Name>Device</Name>
       <Alias>设备识别号</Alias>
       <Authority>R</Authority>
       <ShowType>2</ShowType>
       <Unit>/</Unit>
-      <Extra>16896_ACB1600配电用_16897_ACB电机保护</Extra>
+      <Extra>16896_ACB1600配电用_16897_ACB1600电机保护_16640_ACBDW45配电用_16641_ACBDW45电机保护</Extra>
     </Item>
     <Item>
       <Address>0001</Address>
-      <Name>FactoryCode</Name>
+      <Name>Factory</Name>
       <Alias>工厂代码</Alias>
       <Authority>R</Authority>
       <ShowType>2</ShowType>
@@ -20,7 +20,7 @@
     </Item>
     <Item>
       <Address>0002</Address>
-      <Name>ProductNumberH</Name>
+      <Name>P.N.(H)</Name>
       <Alias>产品序列号H</Alias>
       <Authority>R</Authority>
       <ShowType>0</ShowType>
@@ -29,7 +29,7 @@
     </Item>
     <Item>
       <Address>0003</Address>
-      <Name>ProductNumberL</Name>
+      <Name>P.N.(L)</Name>
       <Alias>产品序列号L</Alias>
       <Authority>R</Authority>
       <ShowType>0</ShowType>
@@ -38,7 +38,7 @@
     </Item>
     <Item>
       <Address>0004</Address>
-      <Name>ProductDateH</Name>
+      <Name>P.D.(H)</Name>
       <Alias>生产日期（年）</Alias>
       <Authority>R</Authority>
       <ShowType>0</ShowType>
@@ -47,30 +47,39 @@
     </Item>
     <Item>
       <Address>0005</Address>
-      <Name>ProductDateL</Name>
+      <Name>P.D.(L)</Name>
       <Alias>生产日期（月、日）</Alias>
       <Authority>R</Authority>
       <ShowType>0</ShowType>
       <Unit>/</Unit>
-      <Extra></Extra>
+      <Extra>1</Extra>
     </Item>
     <Item>
       <Address>0006</Address>
-      <Name>BreakerTypeH</Name>
+      <Name>Breaker(H)</Name>
       <Alias>断路器型号H</Alias>
       <Authority>R</Authority>
       <ShowType>3</ShowType>
       <Unit>/</Unit>
-      <Extra>相序保护_功率测量_逆功率保护_电能测量_电流需用值测量_电流需用值保护_功率需用值测量_功率需用值保护_电压测量_电流不平衡保护_电压不平衡保护_过压保护_欠压保护_频率测量_过频保护_欠频保护</Extra>
+      <Extra>相序保护开关_功率测量开关_逆功率保护开关_电能测量开关_电流需用值测量开关_电流需用值保护开关_功率需用值测量开关_功率需用值保护开关_电压测量开关_电流不平衡保护开关_电压不平衡保护开关_过压保护开关_欠压保护开关_频率测量开关_过频保护开关_欠频保护开关</Extra>
     </Item>
     <Item>
       <Address>0007</Address>
-      <Name>BreakerTypeL</Name>
+      <Name>Breaker(L)</Name>
       <Alias>断路器型号L</Alias>
       <Authority>R</Authority>
       <ShowType>3</ShowType>
       <Unit>/</Unit>
-      <Extra>型号/A/P/H_型号/A/P/H_谐波分析_通信功能_分断等级/C/S/H_分断等级/C/S/H_工作频率/50Hz/60Hz_触点功能_接地漏电/接地/漏电_ZSI</Extra>
+      <Extra>型号L_型号H_谐波分析开关_通信功能开关_分断等级L_分断等级H_工作频率/50Hz/60Hz_触点功能开关_接地漏电开关_接地漏电选择/接地/漏电_ZSI保护开关</Extra>
+      <Influences>
+        <Influence>100B/9/0_0_Ig_1_If</Influence>
+        <Influence>200A/9/0_0_Ig_1_If;3_0_0.2+0.3+0.4+0.5+0.6+0.7+0.8+1_1_1+2+3+5+7+10+20+30</Influence>
+        <Influence>200B/9/0_0_Tg_1_Tf;3_0_接地_1_漏电</Influence>
+        <Influence>2023/6/3_0_45*0.5*50_1_55*0.5*60</Influence>
+        <Influence>2025/6/3_0_45*0.5*50_1_55*0.5*60</Influence>
+        <Influence>2027/6/3_0_50*0.5*55_1_60*0.5*65</Influence>
+        <Influence>2029/6/3_0_50*0.5*55_1_60*0.5*65</Influence>
+      </Influences>
     </Item>
     <Item>
       <Address>0008</Address>
@@ -89,6 +98,11 @@
       <ShowType>1</ShowType>
       <Unit>A</Unit>
       <Extra>1</Extra>
+      <Influences>
+        <Influence>2005/-1/2</Influence>
+        <Influence>2009/-1/2</Influence>
+        <Influence>200A/-1/2</Influence>
+      </Influences>
     </Item>
     <Item>
       <Address>000A</Address>
@@ -101,7 +115,7 @@
     </Item>
     <Item>
       <Address>000B</Address>
-      <Name>ControllerType</Name>
+      <Name>Controller</Name>
       <Alias>控制器类型 </Alias>
       <Authority>R</Authority>
       <ShowType>2</ShowType>
@@ -127,31 +141,31 @@
       <Extra></Extra>
     </Item>
   </Zone>
-  <Zone length="116" address="1000" alias="电网测量参数">
+  <Zone length="116" address="1000" alias="电网测量参数(1000)">
     <Item>
       <Address>1000</Address>
-      <Name>CircuitCheck_H</Name>
+      <Name>CircuitCheck(H)</Name>
       <Alias>电网状态信息（高位）</Alias>
       <Authority>R</Authority>
-      <ShowType>1</ShowType>
+      <ShowType>3</ShowType>
       <Unit>/</Unit>
-      <Extra>1</Extra>
+      <Extra>过载故障/正常/异常_短路故障/正常/异常_瞬时故障/正常/异常_接地/漏电异常/正常/异常_负载监控1/正常/异常_负载监控2/正常/异常_断路器分合闸状态/分闸/合闸_脱扣故障/正常/异常_触头磨损率/正常/异常_超温/正常/异常_拒动/正常/异常_铁电异常/正常/异常_自诊断异常/正常/异常_电流不平衡/正常/异常_电压不平衡/正常/异常_记录是否已读/已读/未读</Extra>
     </Item>
     <Item>
       <Address>1001</Address>
-      <Name>CircuitCheck_L</Name>
+      <Name>CircuitCheck(L)</Name>
       <Alias>电网状态信息（低位）</Alias>
       <Authority>R</Authority>
-      <ShowType>1</ShowType>
+      <ShowType>3</ShowType>
       <Unit>/</Unit>
-      <Extra>1</Extra>
+      <Extra>电流需用值异常/正常/异常_过压异常/正常/异常_欠压异常/正常/异常_过频异常/正常/异常_欠频异常/正常/异常_逆功率异常/正常/异常_MCR异常/正常/异常_相序异常/正常/异常_预报警/正常/异常</Extra>
     </Item>
     <Item>
       <Address>1002</Address>
       <Name>SelfCheck</Name>
       <Alias>自诊断信息</Alias>
       <Authority>R</Authority>
-      <ShowType>1</ShowType>
+      <ShowType>3</ShowType>
       <Unit>/</Unit>
       <Extra>1</Extra>
     </Item>
@@ -160,7 +174,7 @@
       <Name>AlarmFlag</Name>
       <Alias>报警信息</Alias>
       <Authority>R</Authority>
-      <ShowType>1</ShowType>
+      <ShowType>3</ShowType>
       <Unit>/</Unit>
       <Extra>1</Extra>
     </Item>
@@ -184,12 +198,12 @@
     </Item>
     <Item>
       <Address>1006</Address>
-      <Name>PhaseJudge</Name>
+      <Name>Phase</Name>
       <Alias>相序</Alias>
       <Authority>R</Authority>
-      <ShowType>1</ShowType>
+      <ShowType>2</ShowType>
       <Unit>/</Unit>
-      <Extra>1</Extra>
+      <Extra>0_逆序_1_正序_2_断相</Extra>
     </Item>
     <Item>
       <Address>1007</Address>
@@ -292,7 +306,7 @@
     </Item>
     <Item>
       <Address>1012</Address>
-      <Name>Ip_a</Name>
+      <Name>Ip__a</Name>
       <Alias>A相电流不平衡度</Alias>
       <Authority>R</Authority>
       <ShowType>1</ShowType>
@@ -301,7 +315,7 @@
     </Item>
     <Item>
       <Address>1013</Address>
-      <Name>Ip_b</Name>
+      <Name>Ip__b</Name>
       <Alias>B相电流不平衡度</Alias>
       <Authority>R</Authority>
       <ShowType>1</ShowType>
@@ -310,7 +324,7 @@
     </Item>
     <Item>
       <Address>1014</Address>
-      <Name>Ip_c</Name>
+      <Name>Ip__c</Name>
       <Alias>C相电流不平衡度</Alias>
       <Authority>R</Authority>
       <ShowType>1</ShowType>
@@ -319,7 +333,7 @@
     </Item>
     <Item>
       <Address>1015</Address>
-      <Name>Ip_N</Name>
+      <Name>Ip__N</Name>
       <Alias>N相电流不平衡度</Alias>
       <Authority>R</Authority>
       <ShowType>1</ShowType>
@@ -328,7 +342,7 @@
     </Item>
     <Item>
       <Address>1016</Address>
-      <Name>Ip_max</Name>
+      <Name>Ip__max</Name>
       <Alias>最大电流不平衡度</Alias>
       <Authority>R</Authority>
       <ShowType>1</ShowType>
@@ -337,7 +351,7 @@
     </Item>
     <Item>
       <Address>1017</Address>
-      <Name>Up_ab</Name>
+      <Name>Up__ab</Name>
       <Alias>A相电压不平衡度</Alias>
       <Authority>R</Authority>
       <ShowType>1</ShowType>
@@ -346,7 +360,7 @@
     </Item>
     <Item>
       <Address>1018</Address>
-      <Name>Up_bc</Name>
+      <Name>Up__bc</Name>
       <Alias>B相电压不平衡度</Alias>
       <Authority>R</Authority>
       <ShowType>1</ShowType>
@@ -355,7 +369,7 @@
     </Item>
     <Item>
       <Address>1019</Address>
-      <Name>Up_ca</Name>
+      <Name>Up__ca</Name>
       <Alias>C相电压不平衡度</Alias>
       <Authority>R</Authority>
       <ShowType>1</ShowType>
@@ -364,7 +378,7 @@
     </Item>
     <Item>
       <Address>101A</Address>
-      <Name>Up_max</Name>
+      <Name>Up__max</Name>
       <Alias>最大电压不平衡度</Alias>
       <Authority>R</Authority>
       <ShowType>1</ShowType>
@@ -373,56 +387,56 @@
     </Item>
     <Item>
       <Address>101B</Address>
-      <Name>P_H</Name>
+      <Name>P(H)</Name>
       <Alias>有功功率(高字)</Alias>
       <Authority>R</Authority>
       <ShowType>1</ShowType>
-      <Unit>KW</Unit>
+      <Unit>kW</Unit>
       <Extra>1</Extra>
     </Item>
     <Item>
       <Address>101C</Address>
-      <Name>P_L</Name>
+      <Name>P(L)</Name>
       <Alias>有功功率(低字)</Alias>
       <Authority>R</Authority>
       <ShowType>1</ShowType>
-      <Unit>KW</Unit>
+      <Unit>kW</Unit>
       <Extra>1</Extra>
     </Item>
     <Item>
       <Address>101D</Address>
-      <Name>Q_H</Name>
+      <Name>Q(H)</Name>
       <Alias>无功功率(高字)</Alias>
       <Authority>R</Authority>
       <ShowType>1</ShowType>
-      <Unit>Kvar</Unit>
+      <Unit>kVar</Unit>
       <Extra>1</Extra>
     </Item>
     <Item>
       <Address>101E</Address>
-      <Name>Q_L</Name>
+      <Name>Q(L)</Name>
       <Alias>无功功率(低字)</Alias>
       <Authority>R</Authority>
       <ShowType>1</ShowType>
-      <Unit>Kvar</Unit>
+      <Unit>kVar</Unit>
       <Extra>1</Extra>
     </Item>
     <Item>
       <Address>101F</Address>
-      <Name>S_H</Name>
+      <Name>S(H)</Name>
       <Alias>总功率(高字)</Alias>
       <Authority>R</Authority>
       <ShowType>1</ShowType>
-      <Unit>KVA</Unit>
+      <Unit>kVA</Unit>
       <Extra>1</Extra>
     </Item>
     <Item>
       <Address>1020</Address>
-      <Name>S_L</Name>
+      <Name>S(L)</Name>
       <Alias>总功率(高字)</Alias>
       <Authority>R</Authority>
       <ShowType>1</ShowType>
-      <Unit>KVA</Unit>
+      <Unit>kVA</Unit>
       <Extra>1</Extra>
     </Item>
     <Item>
@@ -437,7 +451,7 @@
     </Item>
     <Item>
       <Address>1022</Address>
-      <Name>Id_a</Name>
+      <Name>Id__a</Name>
       <Alias>A相电流需用值</Alias>
       <Authority>R</Authority>
       <ShowType>1</ShowType>
@@ -446,7 +460,7 @@
     </Item>
     <Item>
       <Address>1023</Address>
-      <Name>Id_b</Name>
+      <Name>Id__b</Name>
       <Alias>B相电流需用值</Alias>
       <Authority>R</Authority>
       <ShowType>1</ShowType>
@@ -455,7 +469,7 @@
     </Item>
     <Item>
       <Address>1024</Address>
-      <Name>Id_c</Name>
+      <Name>Id__c</Name>
       <Alias>C相电流需用值</Alias>
       <Authority>R</Authority>
       <ShowType>1</ShowType>
@@ -464,7 +478,7 @@
     </Item>
     <Item>
       <Address>1025</Address>
-      <Name>Id_N</Name>
+      <Name>Id__N</Name>
       <Alias>N相电流需用值</Alias>
       <Authority>R</Authority>
       <ShowType>1</ShowType>
@@ -473,187 +487,187 @@
     </Item>
     <Item>
       <Address>1026</Address>
-      <Name>PdH</Name>
+      <Name>Pd(H)</Name>
       <Alias>需用有功功率P高位</Alias>
       <Authority>R</Authority>
       <ShowType>1</ShowType>
-      <Unit>KW</Unit>
+      <Unit>kW</Unit>
       <Extra>1</Extra>
     </Item>
     <Item>
       <Address>1027</Address>
-      <Name>PdH</Name>
+      <Name>Pd(L)</Name>
       <Alias>需用有功功率P低位</Alias>
       <Authority>R</Authority>
       <ShowType>1</ShowType>
-      <Unit>KW</Unit>
+      <Unit>kW</Unit>
       <Extra>1</Extra>
     </Item>
     <Item>
       <Address>1028</Address>
-      <Name>QdH</Name>
+      <Name>Qd(H)</Name>
       <Alias>需用有功功率Q高位</Alias>
       <Authority>R</Authority>
       <ShowType>1</ShowType>
-      <Unit>Kvar</Unit>
+      <Unit>kVar</Unit>
       <Extra>1</Extra>
     </Item>
     <Item>
       <Address>1029</Address>
-      <Name>QdL</Name>
+      <Name>Qd(L)</Name>
       <Alias>需用有功功率Q低位</Alias>
       <Authority>R</Authority>
       <ShowType>1</ShowType>
-      <Unit>Kvar</Unit>
+      <Unit>kVar</Unit>
       <Extra>1</Extra>
     </Item>
     <Item>
       <Address>102A</Address>
-      <Name>SdH</Name>
+      <Name>Sd(H)</Name>
       <Alias>需用有功功率S高位</Alias>
       <Authority>R</Authority>
       <ShowType>1</ShowType>
-      <Unit>KVA</Unit>
+      <Unit>kVA</Unit>
       <Extra>1</Extra>
     </Item>
     <Item>
       <Address>102B</Address>
-      <Name>SdL</Name>
+      <Name>Sd(L)</Name>
       <Alias>需用有功功率S低位</Alias>
       <Authority>R</Authority>
       <ShowType>1</ShowType>
-      <Unit>KVA</Unit>
+      <Unit>kVA</Unit>
       <Extra>1</Extra>
     </Item>
     <Item>
       <Address>102C</Address>
-      <Name>P_kwhH</Name>
+      <Name>P__kwh(H)</Name>
       <Alias>总有功电能（高字） -大单位</Alias>
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
-      <Unit>Kwh</Unit>
+      <Unit>kWh</Unit>
       <Extra>1</Extra>
     </Item>
     <Item>
       <Address>102D</Address>
-      <Name>P_kwhL</Name>
+      <Name>P__kwh(L)</Name>
       <Alias>总有功电能（低字） -大单位</Alias>
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
-      <Unit>Kwh</Unit>
+      <Unit>kWh</Unit>
       <Extra>1</Extra>
     </Item>
     <Item>
       <Address>102E</Address>
-      <Name>Q_varhH</Name>
+      <Name>Q__varh(H)</Name>
       <Alias>总无功电能（高字） -大单位</Alias>
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
-      <Unit>Kvarh</Unit>
+      <Unit>kVarh</Unit>
       <Extra>1</Extra>
     </Item>
     <Item>
       <Address>102F</Address>
-      <Name>Q_varhL</Name>
+      <Name>Q__varh(L)</Name>
       <Alias>总无功电能（低字） -大单位</Alias>
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
-      <Unit>Kvarh</Unit>
+      <Unit>kVarh</Unit>
       <Extra>1</Extra>
     </Item>
     <Item>
       <Address>1030</Address>
-      <Name>WP_kVAhH</Name>
+      <Name>WP__kVAh(H)</Name>
       <Alias>总电能（高字）     -大单位</Alias>
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
-      <Unit>KVAh</Unit>
+      <Unit>kVAh</Unit>
       <Extra>1</Extra>
     </Item>
     <Item>
       <Address>1031</Address>
-      <Name>WP_kVAhL</Name>
+      <Name>WP__kVAh(L)</Name>
       <Alias>总电能（低字）     -大单位</Alias>
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
-      <Unit>KVAh</Unit>
+      <Unit>kVAh</Unit>
       <Extra>1</Extra>
     </Item>
     <Item>
       <Address>1032</Address>
-      <Name>Pin_kwhH</Name>
+      <Name>Pin__kwh(H)</Name>
       <Alias>输入有功电能（高字）-大单位</Alias>
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
-      <Unit>Kwh</Unit>
+      <Unit>kWh</Unit>
       <Extra>1</Extra>
     </Item>
     <Item>
       <Address>1033</Address>
-      <Name>Pin_kwhL</Name>
+      <Name>Pin__kwh(L)</Name>
       <Alias>输入有功电能（低字）-大单位</Alias>
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
-      <Unit>Kwh</Unit>
+      <Unit>kWh</Unit>
       <Extra>1</Extra>
     </Item>
     <Item>
       <Address>1034</Address>
-      <Name>Qin_varhH</Name>
+      <Name>Qin__varh(H)</Name>
       <Alias>输入无功电能（高字）-大单位</Alias>
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
-      <Unit>Kvarh</Unit>
+      <Unit>kVarh</Unit>
       <Extra>1</Extra>
     </Item>
     <Item>
       <Address>1035</Address>
-      <Name>Qin_varhL</Name>
+      <Name>Qin__varh(L)</Name>
       <Alias>输入无功电能（低字）-大单位</Alias>
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
-      <Unit>Kvarh</Unit>
+      <Unit>kVarh</Unit>
       <Extra>1</Extra>
     </Item>
     <Item>
       <Address>1036</Address>
-      <Name>Pout_kwhH</Name>
+      <Name>Pout__kwh(H)</Name>
       <Alias>输出有功电能（高字）-大单位</Alias>
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
-      <Unit>Kwh</Unit>
+      <Unit>kWh</Unit>
       <Extra>1</Extra>
     </Item>
     <Item>
       <Address>1037</Address>
-      <Name>Pout_kwhL</Name>
+      <Name>Pout__kwh(L)</Name>
       <Alias>输出有功电能（低字）-大单位</Alias>
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
-      <Unit>Kwh</Unit>
+      <Unit>kWh</Unit>
       <Extra>1</Extra>
     </Item>
     <Item>
       <Address>1038</Address>
-      <Name>Qout_varhH</Name>
+      <Name>Qout__varh(H)</Name>
       <Alias>输出无功电能（高字）-大单位</Alias>
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
-      <Unit>Kvarh</Unit>
+      <Unit>kVarh</Unit>
       <Extra>1</Extra>
     </Item>
     <Item>
       <Address>1039</Address>
-      <Name>Qout_varhL</Name>
+      <Name>Qout__varh(L)</Name>
       <Alias>输出无功电能（低字）-大单位</Alias>
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
-      <Unit>Kvarh</Unit>
+      <Unit>kVarh</Unit>
       <Extra>1</Extra>
     </Item>
     <Item>
       <Address>103A</Address>
-      <Name>P_kwhH</Name>
+      <Name>P__kwh(H)</Name>
       <Alias>总有功电能（高字） -中单位</Alias>
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
@@ -662,7 +676,7 @@
     </Item>
     <Item>
       <Address>103B</Address>
-      <Name>P_kwhL</Name>
+      <Name>P__kwh(L)</Name>
       <Alias>总有功电能（低字） -中单位</Alias>
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
@@ -671,7 +685,7 @@
     </Item>
     <Item>
       <Address>103C</Address>
-      <Name>Q_varhH</Name>
+      <Name>Q__varh(H)</Name>
       <Alias>总无功电能（高字） -中单位</Alias>
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
@@ -680,7 +694,7 @@
     </Item>
     <Item>
       <Address>103D</Address>
-      <Name>Q_varhL</Name>
+      <Name>Q__varh(L)</Name>
       <Alias>总无功电能（低字） -中单位</Alias>
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
@@ -689,7 +703,7 @@
     </Item>
     <Item>
       <Address>103E</Address>
-      <Name>WP_kVAhH</Name>
+      <Name>WP__kVAh(H)</Name>
       <Alias>总电能（高字）     -中单位</Alias>
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
@@ -698,7 +712,7 @@
     </Item>
     <Item>
       <Address>103F</Address>
-      <Name>WP_kVAhL</Name>
+      <Name>WP__kVAh(L)</Name>
       <Alias>总电能（低字）     -中单位</Alias>
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
@@ -707,7 +721,7 @@
     </Item>
     <Item>
       <Address>1040</Address>
-      <Name>Pin_kwhH</Name>
+      <Name>Pin__kwh(H)</Name>
       <Alias>输入有功电能（高字）-中单位</Alias>
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
@@ -716,7 +730,7 @@
     </Item>
     <Item>
       <Address>1041</Address>
-      <Name>Pin_kwhL</Name>
+      <Name>Pin__kwh(L)</Name>
       <Alias>输入有功电能（低字）-中单位</Alias>
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
@@ -725,7 +739,7 @@
     </Item>
     <Item>
       <Address>1042</Address>
-      <Name>Qin_varhH</Name>
+      <Name>Qin__varh(H)</Name>
       <Alias>输入无功电能（高字）-中单位</Alias>
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
@@ -734,7 +748,7 @@
     </Item>
     <Item>
       <Address>1043</Address>
-      <Name>Qin_varhL</Name>
+      <Name>Qin__varh(L)</Name>
       <Alias>输入无功电能（低字）-中单位</Alias>
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
@@ -743,7 +757,7 @@
     </Item>
     <Item>
       <Address>1044</Address>
-      <Name>Pout_kwhH</Name>
+      <Name>Pout__kwh(H)</Name>
       <Alias>输出有功电能（高字）-中单位</Alias>
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
@@ -752,7 +766,7 @@
     </Item>
     <Item>
       <Address>1045</Address>
-      <Name>Pout_kwhL</Name>
+      <Name>Pout__kwh(L)</Name>
       <Alias>输出有功电能（低字）-中单位</Alias>
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
@@ -761,7 +775,7 @@
     </Item>
     <Item>
       <Address>1046</Address>
-      <Name>Qout_varhH</Name>
+      <Name>Qout__varh(H)</Name>
       <Alias>输出无功电能（高字）-中单位</Alias>
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
@@ -770,7 +784,7 @@
     </Item>
     <Item>
       <Address>1047</Address>
-      <Name>Qout_varhL</Name>
+      <Name>Qout__varh(L)</Name>
       <Alias>输出无功电能（低字）-中单位</Alias>
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
@@ -779,7 +793,7 @@
     </Item>
     <Item>
       <Address>1048</Address>
-      <Name>P_kwhH</Name>
+      <Name>P__kwh(H)</Name>
       <Alias>总有功电能（高字） -小单位</Alias>
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
@@ -788,7 +802,7 @@
     </Item>
     <Item>
       <Address>1049</Address>
-      <Name>P_kwhL</Name>
+      <Name>P__kwh(L)</Name>
       <Alias>总有功电能（低字） -小单位</Alias>
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
@@ -797,7 +811,7 @@
     </Item>
     <Item>
       <Address>104A</Address>
-      <Name>Q_varhH</Name>
+      <Name>Q__varh(H)</Name>
       <Alias>总无功电能（高字） -小单位</Alias>
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
@@ -806,7 +820,7 @@
     </Item>
     <Item>
       <Address>104B</Address>
-      <Name>Q_varhL</Name>
+      <Name>Q__varh(L)</Name>
       <Alias>总无功电能（低字） -小单位</Alias>
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
@@ -815,7 +829,7 @@
     </Item>
     <Item>
       <Address>104C</Address>
-      <Name>WP_kVAhH</Name>
+      <Name>WP__kVAh(H)</Name>
       <Alias>总电能（高字）    -小单位</Alias>
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
@@ -824,7 +838,7 @@
     </Item>
     <Item>
       <Address>104D</Address>
-      <Name>WP_kVAhL</Name>
+      <Name>WP__kVAh(L)</Name>
       <Alias>总电能（低字）    -小单位</Alias>
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
@@ -833,7 +847,7 @@
     </Item>
     <Item>
       <Address>104E</Address>
-      <Name>Pin_kwhH</Name>
+      <Name>Pin__kwh(H)</Name>
       <Alias>输入有功电能（高字）-小单位</Alias>
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
@@ -842,7 +856,7 @@
     </Item>
     <Item>
       <Address>104F</Address>
-      <Name>Pin_kwhL</Name>
+      <Name>Pin__kwh(L)</Name>
       <Alias>输入有功电能（低字）-小单位</Alias>
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
@@ -851,7 +865,7 @@
     </Item>
     <Item>
       <Address>1050</Address>
-      <Name>Qin_varhH</Name>
+      <Name>Qin__varh(H)</Name>
       <Alias>输入无功电能（高字）-小单位</Alias>
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
@@ -860,7 +874,7 @@
     </Item>
     <Item>
       <Address>1051</Address>
-      <Name>Qin_varhL</Name>
+      <Name>Qin__varh(L)</Name>
       <Alias>输入无功电能（低字）-小单位</Alias>
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
@@ -869,7 +883,7 @@
     </Item>
     <Item>
       <Address>1052</Address>
-      <Name>Pout_kwhH</Name>
+      <Name>Pout__kwh(H)</Name>
       <Alias>输出有功电能（高字）-小单位</Alias>
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
@@ -878,7 +892,7 @@
     </Item>
     <Item>
       <Address>1053</Address>
-      <Name>Pout_kwhL</Name>
+      <Name>Pout__kwh(L)</Name>
       <Alias>输出有功电能（低字）-小单位</Alias>
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
@@ -887,7 +901,7 @@
     </Item>
     <Item>
       <Address>1054</Address>
-      <Name>Qout_varhH</Name>
+      <Name>Qout__varh(H)</Name>
       <Alias>输出无功电能（高字）-小单位</Alias>
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
@@ -896,7 +910,7 @@
     </Item>
     <Item>
       <Address>1055</Address>
-      <Name>Qout_varhL</Name>
+      <Name>Qout__varh(L)</Name>
       <Alias>输出无功电能（低字）-小单位</Alias>
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
@@ -905,7 +919,7 @@
     </Item>
     <Item>
       <Address>1056</Address>
-      <Name>Ia_fft</Name>
+      <Name>Ia__fft</Name>
       <Alias>A相基波电流值</Alias>
       <Authority>R</Authority>
       <ShowType>1</ShowType>
@@ -914,7 +928,7 @@
     </Item>
     <Item>
       <Address>1057</Address>
-      <Name>Ib_fft</Name>
+      <Name>Ib__fft</Name>
       <Alias>B相基波电流值</Alias>
       <Authority>R</Authority>
       <ShowType>1</ShowType>
@@ -923,7 +937,7 @@
     </Item>
     <Item>
       <Address>1058</Address>
-      <Name>Ic_fft</Name>
+      <Name>Ic__fft</Name>
       <Alias>C相基波电流值</Alias>
       <Authority>R</Authority>
       <ShowType>1</ShowType>
@@ -932,7 +946,7 @@
     </Item>
     <Item>
       <Address>1059</Address>
-      <Name>IN_fft</Name>
+      <Name>IN__fft</Name>
       <Alias>N相基波电流值</Alias>
       <Authority>R</Authority>
       <ShowType>1</ShowType>
@@ -941,7 +955,7 @@
     </Item>
     <Item>
       <Address>105A</Address>
-      <Name>Uab_fft</Name>
+      <Name>Uab__fft</Name>
       <Alias>Uab线电压基波电压值</Alias>
       <Authority>R</Authority>
       <ShowType>1</ShowType>
@@ -950,7 +964,7 @@
     </Item>
     <Item>
       <Address>105B</Address>
-      <Name>Ubc_fft</Name>
+      <Name>Ubc__fft</Name>
       <Alias>Ubc线电压相基波电压值</Alias>
       <Authority>R</Authority>
       <ShowType>1</ShowType>
@@ -959,7 +973,7 @@
     </Item>
     <Item>
       <Address>105C</Address>
-      <Name>Uca_fft</Name>
+      <Name>Uca__fft</Name>
       <Alias>Uca线电压相基波电压值</Alias>
       <Authority>R</Authority>
       <ShowType>1</ShowType>
@@ -968,7 +982,7 @@
     </Item>
     <Item>
       <Address>105D</Address>
-      <Name>Ua_fft</Name>
+      <Name>Ua__fft</Name>
       <Alias>Ua相电压基波电压值</Alias>
       <Authority>R</Authority>
       <ShowType>1</ShowType>
@@ -977,7 +991,7 @@
     </Item>
     <Item>
       <Address>105E</Address>
-      <Name>Ub_fft</Name>
+      <Name>Ub__fft</Name>
       <Alias>Ub相电压基波电压值</Alias>
       <Authority>R</Authority>
       <ShowType>1</ShowType>
@@ -986,7 +1000,7 @@
     </Item>
     <Item>
       <Address>105F</Address>
-      <Name>Uc_fft</Name>
+      <Name>Uc__fft</Name>
       <Alias>Uc相电压基波电压值</Alias>
       <Authority>R</Authority>
       <ShowType>1</ShowType>
@@ -995,7 +1009,7 @@
     </Item>
     <Item>
       <Address>1060</Address>
-      <Name>THD_Ia</Name>
+      <Name>THD__Ia</Name>
       <Alias>A相电流基波总畸变率</Alias>
       <Authority>R</Authority>
       <ShowType>1</ShowType>
@@ -1004,7 +1018,7 @@
     </Item>
     <Item>
       <Address>1061</Address>
-      <Name>THD_Ib</Name>
+      <Name>THD__Ib</Name>
       <Alias>B相电流基波总畸变率</Alias>
       <Authority>R</Authority>
       <ShowType>1</ShowType>
@@ -1013,7 +1027,7 @@
     </Item>
     <Item>
       <Address>1062</Address>
-      <Name>THD_Ic</Name>
+      <Name>THD__Ic</Name>
       <Alias>C相电流基波总畸变率</Alias>
       <Authority>R</Authority>
       <ShowType>1</ShowType>
@@ -1022,7 +1036,7 @@
     </Item>
     <Item>
       <Address>1063</Address>
-      <Name>THD_IN</Name>
+      <Name>THD__IN</Name>
       <Alias>N相电流基波总畸变率</Alias>
       <Authority>R</Authority>
       <ShowType>1</ShowType>
@@ -1031,7 +1045,7 @@
     </Item>
     <Item>
       <Address>1064</Address>
-      <Name>thd_Ia</Name>
+      <Name>thd__Ia</Name>
       <Alias>A相电流有效值总畸变率</Alias>
       <Authority>R</Authority>
       <ShowType>1</ShowType>
@@ -1040,7 +1054,7 @@
     </Item>
     <Item>
       <Address>1065</Address>
-      <Name>thd_Ib</Name>
+      <Name>thd__Ib</Name>
       <Alias>B相电流有效值总畸变率</Alias>
       <Authority>R</Authority>
       <ShowType>1</ShowType>
@@ -1049,7 +1063,7 @@
     </Item>
     <Item>
       <Address>1066</Address>
-      <Name>thd_Ic</Name>
+      <Name>thd__Ic</Name>
       <Alias>C相电流有效值总畸变率</Alias>
       <Authority>R</Authority>
       <ShowType>1</ShowType>
@@ -1058,7 +1072,7 @@
     </Item>
     <Item>
       <Address>1067</Address>
-      <Name>thd_IN</Name>
+      <Name>thd__IN</Name>
       <Alias>N相电流有效值总畸变率</Alias>
       <Authority>R</Authority>
       <ShowType>1</ShowType>
@@ -1067,7 +1081,7 @@
     </Item>
     <Item>
       <Address>1068</Address>
-      <Name>THD_Ua</Name>
+      <Name>THD__Ua</Name>
       <Alias>Uab线电压基波总畸变率</Alias>
       <Authority>R</Authority>
       <ShowType>1</ShowType>
@@ -1076,7 +1090,7 @@
     </Item>
     <Item>
       <Address>1069</Address>
-      <Name>THD_Ub</Name>
+      <Name>THD__Ub</Name>
       <Alias>Ubc线电压基波总畸变率</Alias>
       <Authority>R</Authority>
       <ShowType>1</ShowType>
@@ -1085,7 +1099,7 @@
     </Item>
     <Item>
       <Address>106A</Address>
-      <Name>THD_Uc</Name>
+      <Name>THD__Uc</Name>
       <Alias>Uca线电压基波总畸变率</Alias>
       <Authority>R</Authority>
       <ShowType>1</ShowType>
@@ -1094,7 +1108,7 @@
     </Item>
     <Item>
       <Address>106B</Address>
-      <Name>thd_Ua</Name>
+      <Name>thd__Ua</Name>
       <Alias>Uab线电压有效值总畸变率</Alias>
       <Authority>R</Authority>
       <ShowType>1</ShowType>
@@ -1103,7 +1117,7 @@
     </Item>
     <Item>
       <Address>106C</Address>
-      <Name>thd_Ub</Name>
+      <Name>thd__Ub</Name>
       <Alias>Ubc线电压有效值总畸变率</Alias>
       <Authority>R</Authority>
       <ShowType>1</ShowType>
@@ -1112,7 +1126,7 @@
     </Item>
     <Item>
       <Address>106D</Address>
-      <Name>thd_Uc</Name>
+      <Name>thd__Uc</Name>
       <Alias>Uca线电压有效值总畸变率</Alias>
       <Authority>R</Authority>
       <ShowType>1</ShowType>
@@ -1121,7 +1135,7 @@
     </Item>
     <Item>
       <Address>106E</Address>
-      <Name>THD_Ua</Name>
+      <Name>THD__Ua</Name>
       <Alias>Ua相电压基波总畸变率</Alias>
       <Authority>R</Authority>
       <ShowType>1</ShowType>
@@ -1130,7 +1144,7 @@
     </Item>
     <Item>
       <Address>106F</Address>
-      <Name>THD_Ub</Name>
+      <Name>THD__Ub</Name>
       <Alias>Ub相电压基波总畸变率</Alias>
       <Authority>R</Authority>
       <ShowType>1</ShowType>
@@ -1139,7 +1153,7 @@
     </Item>
     <Item>
       <Address>1070</Address>
-      <Name>THD_Uc</Name>
+      <Name>THD__Uc</Name>
       <Alias>Uc相电压基波总畸变率</Alias>
       <Authority>R</Authority>
       <ShowType>1</ShowType>
@@ -1148,7 +1162,7 @@
     </Item>
     <Item>
       <Address>1071</Address>
-      <Name>thd_Ua</Name>
+      <Name>thd__Ua</Name>
       <Alias>Ua相电压有效值 总畸变率</Alias>
       <Authority>R</Authority>
       <ShowType>1</ShowType>
@@ -1157,7 +1171,7 @@
     </Item>
     <Item>
       <Address>1072</Address>
-      <Name>thd_Ub</Name>
+      <Name>thd__Ub</Name>
       <Alias>Ub相电压有效值总畸变率</Alias>
       <Authority>R</Authority>
       <ShowType>1</ShowType>
@@ -1166,7 +1180,7 @@
     </Item>
     <Item>
       <Address>1073</Address>
-      <Name>thd_Uc</Name>
+      <Name>thd__Uc</Name>
       <Alias>Uc相电压有效值总畸变率</Alias>
       <Authority>R</Authority>
       <ShowType>1</ShowType>
@@ -1175,7 +1189,7 @@
     </Item>
     <Item>
       <Address>1074</Address>
-      <Name>Amp_Ia[16]</Name>
+      <Name>Amp__Ia[16]</Name>
       <Alias>A相电流谐波振幅数组</Alias>
       <Authority>R</Authority>
       <ShowType>11</ShowType>
@@ -1184,7 +1198,7 @@
     </Item>
     <Item>
       <Address>1084</Address>
-      <Name>Amp_Ib[16]</Name>
+      <Name>Amp__Ib[16]</Name>
       <Alias>B相电流谐波振幅数组</Alias>
       <Authority>R</Authority>
       <ShowType>11</ShowType>
@@ -1193,7 +1207,7 @@
     </Item>
     <Item>
       <Address>1094</Address>
-      <Name>Amp_Ic[16]</Name>
+      <Name>Amp__Ic[16]</Name>
       <Alias>C相电流谐波振幅数组</Alias>
       <Authority>R</Authority>
       <ShowType>11</ShowType>
@@ -1202,7 +1216,7 @@
     </Item>
     <Item>
       <Address>10A4</Address>
-      <Name>Amp_IN[16]</Name>
+      <Name>Amp__IN[16]</Name>
       <Alias>N相电流谐波振幅数组</Alias>
       <Authority>R</Authority>
       <ShowType>11</ShowType>
@@ -1211,7 +1225,7 @@
     </Item>
     <Item>
       <Address>10B4</Address>
-      <Name>Amp_Ua[16]</Name>
+      <Name>Amp__Ua[16]</Name>
       <Alias>Uab线电压谐波振幅数组</Alias>
       <Authority>R</Authority>
       <ShowType>11</ShowType>
@@ -1220,7 +1234,7 @@
     </Item>
     <Item>
       <Address>10C4</Address>
-      <Name>Amp_Ub[16]</Name>
+      <Name>Amp__Ub[16]</Name>
       <Alias>Ubc线电压谐波振幅数组</Alias>
       <Authority>R</Authority>
       <ShowType>11</ShowType>
@@ -1229,7 +1243,7 @@
     </Item>
     <Item>
       <Address>10D4</Address>
-      <Name>Amp_Uc[16]</Name>
+      <Name>Amp__Uc[16]</Name>
       <Alias>Uca线电压谐波振幅数组</Alias>
       <Authority>R</Authority>
       <ShowType>11</ShowType>
@@ -1238,7 +1252,7 @@
     </Item>
     <Item>
       <Address>10E4</Address>
-      <Name>Amp_Ua[16]</Name>
+      <Name>Amp__Ua[16]</Name>
       <Alias>Ua相电压谐波振幅数组</Alias>
       <Authority>R</Authority>
       <ShowType>11</ShowType>
@@ -1247,7 +1261,7 @@
     </Item>
     <Item>
       <Address>10F4</Address>
-      <Name>Amp_Ub[16]</Name>
+      <Name>Amp__Ub[16]</Name>
       <Alias>Ub相电压谐波振幅数组</Alias>
       <Authority>R</Authority>
       <ShowType>11</ShowType>
@@ -1256,7 +1270,7 @@
     </Item>
     <Item>
       <Address>1104</Address>
-      <Name>Amp_Uc[16]</Name>
+      <Name>Amp__Uc[16]</Name>
       <Alias>Uc相电压谐波振幅数组</Alias>
       <Authority>R</Authority>
       <ShowType>11</ShowType>
@@ -1265,7 +1279,7 @@
     </Item>
     <Item>
       <Address>1114</Address>
-      <Name>AD_Ia[64]</Name>
+      <Name>AD__Ia[64]</Name>
       <Alias>A相电流采样AD数组</Alias>
       <Authority>R</Authority>
       <ShowType>11</ShowType>
@@ -1274,7 +1288,7 @@
     </Item>
     <Item>
       <Address>1154</Address>
-      <Name>AD_Ib[64]</Name>
+      <Name>AD__Ib[64]</Name>
       <Alias>B相电流采样AD数组</Alias>
       <Authority>R</Authority>
       <ShowType>11</ShowType>
@@ -1283,7 +1297,7 @@
     </Item>
     <Item>
       <Address>1194</Address>
-      <Name>AD_Ic[64]</Name>
+      <Name>AD__Ic[64]</Name>
       <Alias>C相电流采样AD数组</Alias>
       <Authority>R</Authority>
       <ShowType>11</ShowType>
@@ -1292,7 +1306,7 @@
     </Item>
     <Item>
       <Address>11D4</Address>
-      <Name>AD_In[64]</Name>
+      <Name>AD__In[64]</Name>
       <Alias>N相电流采样AD数组</Alias>
       <Authority>R</Authority>
       <ShowType>11</ShowType>
@@ -1301,7 +1315,7 @@
     </Item>
     <Item>
       <Address>1214</Address>
-      <Name>AD_Igf[64]</Name>
+      <Name>AD__Igf[64]</Name>
       <Alias>接地/漏电电流采样AD数组</Alias>
       <Authority>R</Authority>
       <ShowType>11</ShowType>
@@ -1310,7 +1324,7 @@
     </Item>
     <Item>
       <Address>1254</Address>
-      <Name>AD_Ua[64]</Name>
+      <Name>AD__Ua[64]</Name>
       <Alias>A相电压采样AD数组</Alias>
       <Authority>R</Authority>
       <ShowType>11</ShowType>
@@ -1319,7 +1333,7 @@
     </Item>
     <Item>
       <Address>1294</Address>
-      <Name>AD_Ub[64]</Name>
+      <Name>AD__Ub[64]</Name>
       <Alias>B相电压采样AD数组</Alias>
       <Authority>R</Authority>
       <ShowType>11</ShowType>
@@ -1328,7 +1342,7 @@
     </Item>
     <Item>
       <Address>12D4</Address>
-      <Name>AD_Uc[64]</Name>
+      <Name>AD__Uc[64]</Name>
       <Alias>C相电压采样AD数组</Alias>
       <Authority>R</Authority>
       <ShowType>11</ShowType>
@@ -1337,7 +1351,7 @@
     </Item>
     <Item>
       <Address>1314</Address>
-      <Name>AD_Uab[64]</Name>
+      <Name>AD__Uab[64]</Name>
       <Alias>线电压Uab采样AD数组</Alias>
       <Authority>R</Authority>
       <ShowType>11</ShowType>
@@ -1346,7 +1360,7 @@
     </Item>
     <Item>
       <Address>1354</Address>
-      <Name>AD_Ubc[64]</Name>
+      <Name>AD__Ubc[64]</Name>
       <Alias>线电压Ubc采样AD数组</Alias>
       <Authority>R</Authority>
       <ShowType>11</ShowType>
@@ -1355,7 +1369,7 @@
     </Item>
     <Item>
       <Address>1394</Address>
-      <Name>AD_Uca[64]</Name>
+      <Name>AD__Uca[64]</Name>
       <Alias>线电压Uca采样AD数组</Alias>
       <Authority>R</Authority>
       <ShowType>11</ShowType>
@@ -1363,105 +1377,117 @@
       <Extra>64</Extra>
     </Item>
   </Zone>
-  <Zone length="51" address="2000" alias="保护设置参数">
+  <Zone length="51" address="2000" alias="保护设置参数(2000)">
     <Item>
       <Address>2000</Address>
       <Name>Password</Name>
       <Alias>操作控制器权限密码</Alias>
       <Authority>RW</Authority>
-      <ShowType>1</ShowType>
+      <ShowType>0</ShowType>
       <Unit>/</Unit>
-      <Extra>1</Extra>
+      <Extra></Extra>
     </Item>
     <Item>
       <Address>2001</Address>
-      <Name>ProtectSwitchH</Name>
+      <Name>P.S.(H)</Name>
       <Alias>各种保护开关(高字)</Alias>
       <Authority>RW</Authority>
-      <ShowType>1</ShowType>
+      <ShowType>3</ShowType>
       <Unit>/</Unit>
-      <Extra>1</Extra>
+      <Extra>过载保护开关_短路保护开关_瞬时保护开关_接地/漏电开关_短路定反时限/定时限/反时限_接地定反时限/定时限/反时限_负载监控开关_负载监控方式选择/方式1/方式2_过载热记忆开关_短路热记忆开关_N相保护开关_N相设置50%/100%/50%/100%_电流不平衡开关_电压不平衡开关_过压开关_欠压开关</Extra>
+      <Influences>
+        <Influence>2008/4/3_0_0*0.1*0.4_1_0.1*0.1*0.4</Influence>
+        <Influence>200B/5/3_0_0*0.1*0.4_1_0.1*0.1*0.4</Influence>
+      </Influences>
     </Item>
     <Item>
       <Address>2002</Address>
-      <Name>ProtectSwitchL</Name>
+      <Name>P.S.(L)</Name>
       <Alias>各种保护开关(低字)</Alias>
       <Authority>RW</Authority>
-      <ShowType>1</ShowType>
+      <ShowType>3</ShowType>
       <Unit>/</Unit>
-      <Extra>1</Extra>
+      <Extra>逆功率保护开关_过频保护开关_欠频保护开关_相序保护开关_需用电流保护开关_短路ZSI保护开关_接地ZSI保护开关_MCR保护开关_温度报警_电流3相/4相/3CT/4CT_电压3线/4线/3线(ABC)/4线(ABCN)_功率方向/P-/P+_参数锁定/未锁定/锁定中</Extra>
     </Item>
     <Item>
       <Address>2003</Address>
-      <Name>un_ProType</Name>
+      <Name>ProType</Name>
       <Alias>保护动作类型开关</Alias>
       <Authority>RW</Authority>
-      <ShowType>1</ShowType>
+      <ShowType>3</ShowType>
       <Unit>/</Unit>
-      <Extra>1</Extra>
+      <Extra>电流不平衡保护/报警/脱口_电压不平衡保护/报警/脱口_过压保护/报警/脱口_欠压保护/报警/脱口_逆功率保护/报警/脱口_过频保护/报警/脱口_欠频保护/报警/脱口_相序保护/报警/脱口_电流需用值保护/报警/脱口_漏电保护/报警/脱口_接地保护/报警/脱口</Extra>
+      <Influences>
+        <Influence>200B/9/3_0_0.1+0.2+0.4+0.8+1_1_0.1+0.2+0.4+0.8</Influence>
+      </Influences>
     </Item>
     <Item>
       <Address>2004</Address>
       <Name>ProCurve</Name>
       <Alias>保护曲线</Alias>
       <Authority>RW</Authority>
-      <ShowType>1</ShowType>
+      <ShowType>2</ShowType>
       <Unit>/</Unit>
-      <Extra>1</Extra>
+      <Extra>0_EIT_1_HVF_2_DT_3_SIT_4_VIT</Extra>
     </Item>
     <Item>
       <Address>2005</Address>
-      <Name>Ir1</Name>
+      <Name>Ir</Name>
       <Alias>过载长延时整定值 </Alias>
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
-      <Unit>A</Unit>
-      <Extra>1</Extra>
+      <Unit>*In</Unit>
+      <Extra>1_0.4*0.005*1</Extra>
+      <Influences>
+        <Influence>2007/-1/2</Influence>
+        <Influence>200C/-1/2</Influence>
+        <Influence>200D/-1/2</Influence>
+      </Influences>
     </Item>
     <Item>
       <Address>2006</Address>
-      <Name>Tr1</Name>
+      <Name>Tr</Name>
       <Alias>长延时整定时间</Alias>
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
       <Unit>S</Unit>
-      <Extra>10</Extra>
+      <Extra>10_0.5_1_2_4_8_12_16_20_24</Extra>
     </Item>
     <Item>
       <Address>2007</Address>
-      <Name>Ir2</Name>
-      <Alias>短路短延时整定值 （0-OFF）</Alias>
+      <Name>Isd</Name>
+      <Alias>短路短延时整定值</Alias>
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
-      <Unit>A</Unit>
-      <Extra>1</Extra>
+      <Unit>*Ir</Unit>
+      <Extra>1_1.5_2_3_4_5_6_8_10</Extra>
     </Item>
     <Item>
       <Address>2008</Address>
-      <Name>Tr2</Name>
+      <Name>Tsd</Name>
       <Alias>短延时整定时间</Alias>
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
       <Unit>S</Unit>
-      <Extra>100</Extra>
+      <Extra>100_0_0.1_0.2_0.3_0.4</Extra>
     </Item>
     <Item>
       <Address>2009</Address>
-      <Name>Ir3</Name>
-      <Alias>瞬时保护整定值 （0-OFF）</Alias>
+      <Name>Ii</Name>
+      <Alias>瞬时保护整定值</Alias>
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
-      <Unit>A</Unit>
-      <Extra>1</Extra>
+      <Unit>*In</Unit>
+      <Extra>1_2_4_6_8_10_11_12_15</Extra>
     </Item>
     <Item>
       <Address>200A</Address>
       <Name>Ig/If</Name>
-      <Alias>接地/漏电保护整定值（0-OFF）</Alias>
+      <Alias>接地/漏电保护整定值</Alias>
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
-      <Unit>A/mA</Unit>
-      <Extra>1</Extra>
+      <Unit>*In</Unit>
+      <Extra>1_0.2_0.3_0.4_0.5_0.6_0.7_0.8_1</Extra>
     </Item>
     <Item>
       <Address>200B</Address>
@@ -1470,43 +1496,49 @@
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
       <Unit>S</Unit>
-      <Extra>100</Extra>
+      <Extra>100_Null</Extra>
     </Item>
     <Item>
       <Address>200C</Address>
       <Name>Ic1</Name>
-      <Alias>负载监控整定值1 （0-OFF）</Alias>
+      <Alias>负载监控整定值1</Alias>
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
-      <Unit>A</Unit>
-      <Extra>1</Extra>
+      <Unit>*Ir</Unit>
+      <Extra>1_0.5*0.1*1.0</Extra>
+      <Influences>
+        <Influence>200D/-1/4_UPPER</Influence>
+      </Influences>
     </Item>
     <Item>
       <Address>200D</Address>
       <Name>Ic2</Name>
-      <Alias>负载监控整定值2 （0-OFF）</Alias>
+      <Alias>负载监控整定值2</Alias>
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
-      <Unit>A</Unit>
-      <Extra>1</Extra>
+      <Unit>*Ir</Unit>
+      <Extra>1_0.5*0.1*1.0</Extra>
+      <Influences>
+        <Influence>200C/-1/4_LOWER</Influence>
+      </Influences>
     </Item>
     <Item>
       <Address>200E</Address>
       <Name>Output12</Name>
       <Alias>可编程输出触点1、2</Alias>
       <Authority>RW</Authority>
-      <ShowType>1</ShowType>
+      <ShowType>13</ShowType>
       <Unit>/</Unit>
-      <Extra>1</Extra>
+      <Extra>76_过载_83_短路_73_瞬时_71_接地_69_漏电_49_负载一_50_负载二_51_不平衡I_52_不平衡U_85_过压_117_欠压_70_过频_102_欠频_68_需用值I_80_相序_82_逆功率_84_脱扣_77_MCR_114_拒动_79_超温_67_磨损_111_远程分_99_远程合_48_空闲_87_预报警</Extra>
     </Item>
     <Item>
       <Address>200F</Address>
       <Name>Output34</Name>
       <Alias>可编程输出触点3、4</Alias>
       <Authority>RW</Authority>
-      <ShowType>1</ShowType>
+      <ShowType>13</ShowType>
       <Unit>/</Unit>
-      <Extra>1</Extra>
+      <Extra>76_过载_83_短路_73_瞬时_71_接地_69_漏电_49_负载一_50_负载二_51_不平衡I_52_不平衡U_85_过压_117_欠压_70_过频_102_欠频_68_需用值I_80_相序_82_逆功率_84_脱扣_77_MCR_114_拒动_79_超温_67_磨损_111_远程分_99_远程合_48_空闲_87_预报警</Extra>
     </Item>
     <Item>
       <Address>2010</Address>
@@ -1515,7 +1547,7 @@
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
       <Unit>Min</Unit>
-      <Extra>1</Extra>
+      <Extra>1_1*1*30</Extra>
     </Item>
     <Item>
       <Address>2011</Address>
@@ -1524,16 +1556,19 @@
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
       <Unit>Min</Unit>
-      <Extra>1</Extra>
+      <Extra>1_1*1*30</Extra>
     </Item>
     <Item>
       <Address>2012</Address>
       <Name>Ip</Name>
-      <Alias>电流不平衡动作值（0-OFF）</Alias>
+      <Alias>电流不平衡动作值</Alias>
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
       <Unit>%</Unit>
-      <Extra>1</Extra>
+      <Extra>1_20*1*80</Extra>
+      <Influences>
+        <Influence>2014/-1/4_UPPER</Influence>
+      </Influences>
     </Item>
     <Item>
       <Address>2013</Address>
@@ -1542,7 +1577,7 @@
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
       <Unit>S</Unit>
-      <Extra>1</Extra>
+      <Extra>1_1*1*40</Extra>
     </Item>
     <Item>
       <Address>2014</Address>
@@ -1551,7 +1586,10 @@
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
       <Unit>%</Unit>
-      <Extra>1</Extra>
+      <Extra>1_20*1*80</Extra>
+      <Influences>
+        <Influence>2012/-1/4_LOWER</Influence>
+      </Influences>
     </Item>
     <Item>
       <Address>2015</Address>
@@ -1560,16 +1598,19 @@
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
       <Unit>S</Unit>
-      <Extra>1</Extra>
+      <Extra>1_10*1*360</Extra>
     </Item>
     <Item>
       <Address>2016</Address>
       <Name>Up</Name>
-      <Alias>电压不平衡动作值（0-OFF）</Alias>
+      <Alias>电压不平衡动作值</Alias>
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
       <Unit>%</Unit>
-      <Extra>1</Extra>
+      <Extra>1_5*1*50</Extra>
+      <Influences>
+        <Influence>2018/-1/4_UPPER</Influence>
+      </Influences>
     </Item>
     <Item>
       <Address>2017</Address>
@@ -1578,7 +1619,7 @@
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
       <Unit>S</Unit>
-      <Extra>1</Extra>
+      <Extra>1_1*1*40</Extra>
     </Item>
     <Item>
       <Address>2018</Address>
@@ -1587,7 +1628,10 @@
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
       <Unit>%</Unit>
-      <Extra>1</Extra>
+      <Extra>1_5*1*50</Extra>
+      <Influences>
+        <Influence>2016/-1/4_LOWER</Influence>
+      </Influences>
     </Item>
     <Item>
       <Address>2019</Address>
@@ -1596,169 +1640,196 @@
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
       <Unit>S</Unit>
-      <Extra>1</Extra>
+      <Extra>1_10*1*360</Extra>
     </Item>
     <Item>
       <Address>201A</Address>
-      <Name>PhaseSequence</Name>
-      <Alias>相序整定值（0-OFF）</Alias>
+      <Name>Phase</Name>
+      <Alias>相序整定值</Alias>
       <Authority>RW</Authority>
-      <ShowType>1</ShowType>
+      <ShowType>2</ShowType>
       <Unit>/</Unit>
-      <Extra>1</Extra>
+      <Extra>0_逆序_1_正序_2_断相</Extra>
     </Item>
     <Item>
       <Address>201B</Address>
-      <Name>U_Low</Name>
-      <Alias>欠压动作值OFF</Alias>
+      <Name>U__Low</Name>
+      <Alias>欠压动作值</Alias>
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
       <Unit>V</Unit>
-      <Extra>1</Extra>
+      <Extra>1_77*1*828</Extra>
+      <Influences>
+        <Influence>201D/-1/4_LOWER</Influence>
+      </Influences>
     </Item>
     <Item>
       <Address>201C</Address>
-      <Name>Tu_Low</Name>
+      <Name>Tu__Low</Name>
       <Alias>欠压动作时间</Alias>
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
       <Unit>S</Unit>
-      <Extra>10</Extra>
+      <Extra>10_1*0.1*30</Extra>
     </Item>
     <Item>
       <Address>201D</Address>
-      <Name>Ur_Low</Name>
+      <Name>Ur__Low</Name>
       <Alias>欠压返回值</Alias>
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
       <Unit>V</Unit>
-      <Extra>1</Extra>
+      <Extra>1_77*1*828</Extra>
+      <Influences>
+        <Influence>201B/-1/4_UPPER</Influence>
+      </Influences>
     </Item>
     <Item>
       <Address>201E</Address>
-      <Name>Tur_Low</Name>
+      <Name>Tur__Low</Name>
       <Alias>欠压返回时间</Alias>
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
       <Unit>S</Unit>
-      <Extra>10</Extra>
+      <Extra>10_1*0.1*100</Extra>
     </Item>
     <Item>
       <Address>201F</Address>
-      <Name>U_Over</Name>
-      <Alias>过压动作值（0-OFF）</Alias>
+      <Name>U__Over</Name>
+      <Alias>过压动作值</Alias>
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
       <Unit>V</Unit>
-      <Extra>1</Extra>
+      <Extra>1_77*1*828</Extra>
+      <Influences>
+        <Influence>2021/-1/4_UPPER</Influence>
+      </Influences>
     </Item>
     <Item>
       <Address>2020</Address>
-      <Name>Tu_Qver</Name>
+      <Name>Tu__Over</Name>
       <Alias>过压动作时间</Alias>
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
       <Unit>S</Unit>
-      <Extra>10</Extra>
+      <Extra>10_1*0.1*5</Extra>
     </Item>
     <Item>
       <Address>2021</Address>
-      <Name>Ur_Qver</Name>
+      <Name>Ur__Over</Name>
       <Alias>过压返回值</Alias>
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
       <Unit>V</Unit>
-      <Extra>1</Extra>
+      <Extra>1_77*1*828</Extra>
+      <Influences>
+        <Influence>201F/-1/4_LOWER</Influence>
+      </Influences>
     </Item>
     <Item>
       <Address>2022</Address>
-      <Name>Tur_Qver</Name>
+      <Name>Tur__Over</Name>
       <Alias>过压返回时间</Alias>
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
       <Unit>S</Unit>
-      <Extra>10</Extra>
+      <Extra>10_1*0.1*36</Extra>
     </Item>
     <Item>
       <Address>2023</Address>
-      <Name>F_Low</Name>
-      <Alias>欠频动作值（0-OFF）</Alias>
+      <Name>F__Low</Name>
+      <Alias>欠频动作值</Alias>
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
       <Unit>Hz</Unit>
-      <Extra>100</Extra>
+      <Extra>100_50*0.5*55</Extra>
+      <Influences>
+        <Influence>2025/-1/4_LOWER</Influence>
+      </Influences>
     </Item>
     <Item>
       <Address>2024</Address>
-      <Name>Tf_Low</Name>
+      <Name>Tf__Low</Name>
       <Alias>欠频动作时间</Alias>
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
       <Unit>S</Unit>
-      <Extra>10</Extra>
+      <Extra>10_0.2*0.1*5</Extra>
     </Item>
     <Item>
       <Address>2025</Address>
-      <Name>Fr_Low</Name>
+      <Name>Fr__Low</Name>
       <Alias>欠频返回值</Alias>
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
       <Unit>Hz</Unit>
-      <Extra>100</Extra>
+      <Extra>100_50*0.5*55</Extra>
+      <Influences>
+        <Influence>2023/-1/4_UPPER</Influence>
+      </Influences>
     </Item>
     <Item>
       <Address>2026</Address>
-      <Name>Tfr_Low</Name>
+      <Name>Tfr__Low</Name>
       <Alias>欠频返回时间</Alias>
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
       <Unit>S</Unit>
-      <Extra>10</Extra>
+      <Extra>10_1*1*360</Extra>
     </Item>
     <Item>
       <Address>2027</Address>
-      <Name>F_Over</Name>
-      <Alias>过频动作值（0-OFF）</Alias>
+      <Name>F__Over</Name>
+      <Alias>过频动作值</Alias>
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
       <Unit>Hz</Unit>
-      <Extra>100</Extra>
+      <Extra>100_50*0.5*55</Extra>
+      <Influences>
+        <Influence>2029/-1/4_UPPER</Influence>
+      </Influences>
     </Item>
     <Item>
       <Address>2028</Address>
-      <Name>Tf_Qver</Name>
+      <Name>Tf__Over</Name>
       <Alias>过频动作时间</Alias>
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
       <Unit>S</Unit>
-      <Extra>10</Extra>
+      <Extra>10_0.2*0.1*5</Extra>
     </Item>
     <Item>
       <Address>2029</Address>
-      <Name>Fr_Qver</Name>
+      <Name>Fr__Over</Name>
       <Alias>过频返回值</Alias>
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
       <Unit>Hz</Unit>
-      <Extra>100</Extra>
+      <Extra>100_50*0.5*55</Extra>
+      <Influences>
+        <Influence>2027/-1/4_LOWER</Influence>
+      </Influences>
     </Item>
     <Item>
       <Address>202A</Address>
-      <Name>Tfr_Qver</Name>
+      <Name>Tfr__Over</Name>
       <Alias>过频返回时间</Alias>
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
       <Unit>S</Unit>
-      <Extra>10</Extra>
+      <Extra>10_1*1*360</Extra>
     </Item>
     <Item>
       <Address>202B</Address>
       <Name>Pr</Name>
-      <Alias>逆功率动作值（0-OFF）</Alias>
+      <Alias>逆功率动作值</Alias>
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
-      <Unit>KW</Unit>
-      <Extra>1</Extra>
+      <Unit>kW</Unit>
+      <Extra>1_20*1*500</Extra>
+      <Influences>
+        <Influence>202D/-1/4_UPPER</Influence>
+      </Influences>
     </Item>
     <Item>
       <Address>202C</Address>
@@ -1767,7 +1838,7 @@
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
       <Unit>S</Unit>
-      <Extra>10</Extra>
+      <Extra>10_0.2*0.1*20</Extra>
     </Item>
     <Item>
       <Address>202D</Address>
@@ -1775,8 +1846,11 @@
       <Alias>逆功率返回值</Alias>
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
-      <Unit>KW</Unit>
-      <Extra>1</Extra>
+      <Unit>kW</Unit>
+      <Extra>1_20*1*500</Extra>
+      <Influences>
+        <Influence>202B/-1/4_LOWER</Influence>
+      </Influences>
     </Item>
     <Item>
       <Address>202E</Address>
@@ -1785,16 +1859,19 @@
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
       <Unit>S</Unit>
-      <Extra>10</Extra>
+      <Extra>10_1*1*360</Extra>
     </Item>
     <Item>
       <Address>202F</Address>
       <Name>Idr</Name>
-      <Alias>需用电流保护动作值（0-OFF）</Alias>
+      <Alias>需用电流保护动作值</Alias>
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
       <Unit>In</Unit>
-      <Extra>10</Extra>
+      <Extra>10_0.4*0.1*1</Extra>
+      <Influences>
+        <Influence>2031/-1/4_UPPER</Influence>
+      </Influences>
     </Item>
     <Item>
       <Address>2030</Address>
@@ -1803,7 +1880,7 @@
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
       <Unit>S</Unit>
-      <Extra>1</Extra>
+      <Extra>1_15*15*1500</Extra>
     </Item>
     <Item>
       <Address>2031</Address>
@@ -1812,7 +1889,10 @@
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
       <Unit>In</Unit>
-      <Extra>10</Extra>
+      <Extra>10_0.4*0.1*1</Extra>
+      <Influences>
+        <Influence>202F/-1/4_LOWER</Influence>
+      </Influences>
     </Item>
     <Item>
       <Address>2032</Address>
@@ -1821,49 +1901,49 @@
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
       <Unit>S</Unit>
-      <Extra>1</Extra>
+      <Extra>1_15*15*3000</Extra>
     </Item>
   </Zone>
-  <Zone length="7" address="3000" alias="断路器工作参数">
+  <Zone length="7" address="3000" alias="断路器工作参数(3000)">
     <Item>
       <Address>3000</Address>
-      <Name>ContactorWearA</Name>
+      <Name>C.W.A</Name>
       <Alias>触头磨损率A </Alias>
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
       <Unit>%</Unit>
-      <Extra>100</Extra>
+      <Extra>0.01</Extra>
     </Item>
     <Item>
       <Address>3001</Address>
-      <Name>ContactorWearB</Name>
+      <Name>C.W.B</Name>
       <Alias>触头磨损率B</Alias>
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
       <Unit>%</Unit>
-      <Extra>100</Extra>
+      <Extra>0.01</Extra>
     </Item>
     <Item>
       <Address>3002</Address>
-      <Name>ContactorWearC</Name>
+      <Name>C.W.C</Name>
       <Alias>触头磨损率C</Alias>
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
       <Unit>%</Unit>
-      <Extra>100</Extra>
+      <Extra>0.01</Extra>
     </Item>
     <Item>
       <Address>3003</Address>
-      <Name>ContactorWearN</Name>
+      <Name>C.W.N</Name>
       <Alias>触头磨损率N</Alias>
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
       <Unit>%</Unit>
-      <Extra>100</Extra>
+      <Extra>0.01</Extra>
     </Item>
     <Item>
       <Address>3004</Address>
-      <Name>BreakCount</Name>
+      <Name>Break</Name>
       <Alias>脱扣器脱扣次数</Alias>
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
@@ -1872,7 +1952,7 @@
     </Item>
     <Item>
       <Address>3005</Address>
-      <Name>OperateCount</Name>
+      <Name>Operate</Name>
       <Alias>操作次数</Alias>
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
@@ -1881,7 +1961,7 @@
     </Item>
     <Item>
       <Address>3006</Address>
-      <Name>AlarmCount</Name>
+      <Name>Alarm</Name>
       <Alias>报警次数</Alias>
       <Authority>RW</Authority>
       <ShowType>1</ShowType>
@@ -1889,19 +1969,19 @@
       <Extra>1</Extra>
     </Item>
   </Zone>
-  <Zone length="3" address="4000" alias="Modbus接口参数">
+  <Zone length="3" address="4000" alias="Modbus接口参数(4000)">
     <Item>
       <Address>4000</Address>
-      <Name>BusComSet</Name>
+      <Name>ComSet</Name>
       <Alias>通讯设置</Alias>
       <Authority>R</Authority>
-      <ShowType>1</ShowType>
+      <ShowType>2</ShowType>
       <Unit>/</Unit>
-      <Extra>1</Extra>
+      <Extra>0_modbus 本地_1_modbus 远程_2_profibus 本地_3_profibus 远程</Extra>
     </Item>
     <Item>
       <Address>4001</Address>
-      <Name>BusAddress</Name>
+      <Name>Address</Name>
       <Alias>通讯地址</Alias>
       <Authority>R</Authority>
       <ShowType>1</ShowType>
@@ -1910,74 +1990,84 @@
     </Item>
     <Item>
       <Address>4002</Address>
-      <Name>BusBaudrate</Name>
+      <Name>Baudrate</Name>
       <Alias>通讯波特率</Alias>
       <Authority>R</Authority>
       <ShowType>1</ShowType>
-      <Unit>bit/S</Unit>
+      <Unit>bit/s</Unit>
       <Extra>1</Extra>
     </Item>
   </Zone>
-  <Zone length="1" address="5000" alias="断路器控制参数">
+  <Zone length="1" address="5000" alias="断路器控制参数(5000)">
     <Item>
       <Address>5000</Address>
       <Name>FarControl</Name>
       <Alias>远程分/合闸</Alias>
       <Authority>W</Authority>
-      <ShowType>1</ShowType>
+      <ShowType>2</ShowType>
       <Unit>/</Unit>
-      <Extra>1</Extra>
+      <Extra>21845_远程分闸_43690_远程合闸</Extra>
     </Item>
   </Zone>
-  <Zone length="13" address="6000" alias="脱扣记录参数">
+  <Zone length="13" address="6000" alias="脱扣记录参数(6000)" offset="0">
     <Item>
       <Address>6000</Address>
-      <Name>TripType_1</Name>
+      <Name>Type</Name>
       <Alias>脱扣故障类型</Alias>
       <Authority>R</Authority>
-      <ShowType>1</ShowType>
+      <ShowType>2</ShowType>
       <Unit>/</Unit>
-      <Extra>1</Extra>
+      <Extra>76_过载故障_83_短路故障_73_瞬时故障_71_接地故障_69_漏电故障_77_MCR故障_72_HSISC故障_90_ZSI故障_84_试验故障_117_电流不平衡故障_85_电压不平衡故障_118_欠压故障_86_过压故障_102_欠频故障_70_过频故障_82_逆功率故障_80_相序故障_68_需用电流故障</Extra>
+      <Influences>
+        <Influence>6005/-1/0_76_Ir_83_Ir_73_Ir_71_Ir_69_Ir_72_Ir_77_Ir_90_Ir_117_Ir_68_Ir_86_Ur_118_Ur_85_Ur_70_Fr_102_Fr_82_Pr_80_Phase_84_-;1_76_A_83_A_73_A_71_A_69_mA_72_kA_77_A_90_A_117_%_68_A_86_V_118_V_85_%_70_Hz_102_Hz_82_kW_80_-_84_-;2_76_1_83_1_73_1_71_1_69_1_72_1_77_1_90_1_117_100_68_1_86_1_118_1_85_100_70_100_102_100_82_1_80_1_84_1;</Influence>
+        <Influence>6006/-1/0_76_Tr_83_Tr_73_Tr_71_Tr_69_Tr_72_Tr_77_Tr_90_Tr_117_Tr_68_Tr_86_Tr_118_Tr_85_Tr_70_Tr_102_Tr_82_Tr_80_Tr_84_-;1_76_s_83_ms_73_ms_71_ms_69_ms_72_-_77_ms_90_ms_117_ms_68_s_86_ms_118_ms_85_ms_70_s_102_s_82_ms_80_ms_84_-;2_76_10_83_1_73_1_71_1_69_1_72_1_77_1_90_1_117_0.1_68_1_86_0.1_118_0.1_85_0.1_70_100_102_100_82_0.1_80_0.1_84_1</Influence>
+        <Influence>6007/-1/0_76_I_83_I_73_I_71_I_69_I_72_-_77_I_90_I_117_I_68_I_86_U_118_U_85_U_70_F_102_F_82_P_80_Phase_84_-;1_76_A_83_A_73_A_71_A_69_mA_72_-_77_A_90_A_117_%_68_A_86_V_118_V_85_%_70_Hz_102_Hz_82_kW_80_-_84_-;2_76_1_83_1_73_1_71_1_69_1_72_1_77_1_90_1_117_100_68_1_86_1_118_1_85_100_70_100_102_100_82_1_80_1_84_1</Influence>
+        <Influence>6008/-1/0_76_T_83_T_73_T_71_T_69_T_72_T_77_T_90_T_117_T_68_T_86_T_118_T_85_T_70_T_102_T_82_T_80_T_84_-;1_76_s_83_ms_73_ms_71_ms_69_ms_72_-_77_ms_90_ms_117_ms_68_s_86_ms_118_ms_85_ms_70_s_102_s_82_ms_80_ms_84_-;2_76_10_83_1_73_1_71_1_69_1_72_1_77_1_90_1_117_0.1_68_1_86_0.1_118_0.1_85_0.1_70_100_102_100_82_0.1_80_0.1_84_1</Influence>
+        <Influence>6009/-1/0_76_Ia_83_Ia_73_Ia_71_Ia_69_Ia_72_Ia_77_Ia_90_Ia_117_Ia_68_Ia_86_U1_118_U1_85_U1_70_-_102_-_82_-_80_-_84_-;1_76_A_83_A_73_A_71_A_69_A_72_A_77_A_90_A_117_A_68_A_86_V_118_V_85_V_70_-_102_-_82_-_80_-_84_-</Influence>
+        <Influence>600A/-1/0_76_Ib_83_Ib_73_Ib_71_Ib_69_Ib_72_Ib_77_Ib_90_Ib_117_Ib_68_Ib_86_U2_118_U2_85_U2_70_-_102_-_82_-_80_-_84_-;1_76_A_83_A_73_A_71_A_69_A_72_A_77_A_90_A_117_A_68_A_86_V_118_V_85_V_70_-_102_-_82_-_80_-_84_-</Influence>
+        <Influence>600B/-1/0_76_Ic_83_Ic_73_Ic_71_Ic_69_Ic_72_Ic_77_Ic_90_Ic_117_Ic_68_Ic_86_U3_118_U3_85_U3_70_-_102_-_82_-_80_-_84_-;1_76_A_83_A_73_A_71_A_69_A_72_A_77_A_90_A_117_A_68_A_86_V_118_V_85_V_70_-_102_-_82_-_80_-_84_-</Influence>
+        <Influence>600C/-1/0_76_IN_83_IN_73_IN_71_IN_69_IN_72_IN_77_IN_90_IN_117_IN_68_IN_86_-_118_-_85_-_70_-_102_-_82_-_80_-_84_-;1_76_A_83_A_73_A_71_A_69_A_72_A_77_A_90_A_117_A_68_A_86_V_118_V_85_V_70_-_102_-_82_-_80_-_84_-</Influence>
+      </Influences>
     </Item>
     <Item>
       <Address>6001</Address>
-      <Name>TripPhase_1</Name>
+      <Name>Phase</Name>
       <Alias>脱扣相极</Alias>
       <Authority>R</Authority>
-      <ShowType>1</ShowType>
+      <ShowType>2</ShowType>
       <Unit>/</Unit>
-      <Extra>1</Extra>
+      <Extra>65_A相_66_B相_67_C相_78_N相</Extra>
     </Item>
     <Item>
       <Address>6002</Address>
-      <Name>TripTimeH_1</Name>
+      <Name>YY MM</Name>
       <Alias>脱扣时间（年、月）</Alias>
       <Authority>R</Authority>
-      <ShowType>1</ShowType>
+      <ShowType>0</ShowType>
       <Unit>/</Unit>
-      <Extra>1</Extra>
+      <Extra></Extra>
     </Item>
     <Item>
       <Address>6003</Address>
-      <Name>TripTimeM_1</Name>
+      <Name>DD HH</Name>
       <Alias>脱扣时间（日、时）</Alias>
       <Authority>R</Authority>
-      <ShowType>1</ShowType>
+      <ShowType>0</ShowType>
       <Unit>/</Unit>
-      <Extra>1</Extra>
+      <Extra></Extra>
     </Item>
     <Item>
       <Address>6004</Address>
-      <Name>TripTimeL_1</Name>
+      <Name>mm ss</Name>
       <Alias>脱扣时间（分、秒）</Alias>
       <Authority>R</Authority>
-      <ShowType>1</ShowType>
+      <ShowType>0</ShowType>
       <Unit>/</Unit>
       <Extra>1</Extra>
     </Item>
     <Item>
       <Address>6005</Address>
-      <Name>TripIr_1</Name>
+      <Name>Ir</Name>
       <Alias>当前整定动作值</Alias>
       <Authority>R</Authority>
       <ShowType>1</ShowType>
@@ -1986,7 +2076,7 @@
     </Item>
     <Item>
       <Address>6006</Address>
-      <Name>TripTr_1</Name>
+      <Name>Tr</Name>
       <Alias>当前整定时间值</Alias>
       <Authority>R</Authority>
       <ShowType>1</ShowType>
@@ -1995,7 +2085,7 @@
     </Item>
     <Item>
       <Address>6007</Address>
-      <Name>TripI_1</Name>
+      <Name>I</Name>
       <Alias>当前故障动作值</Alias>
       <Authority>R</Authority>
       <ShowType>1</ShowType>
@@ -2004,7 +2094,7 @@
     </Item>
     <Item>
       <Address>6008</Address>
-      <Name>TripT_1</Name>
+      <Name>T</Name>
       <Alias>脱扣延时时间</Alias>
       <Authority>R</Authority>
       <ShowType>1</ShowType>
@@ -2013,7 +2103,7 @@
     </Item>
     <Item>
       <Address>6009</Address>
-      <Name>TripIa_1</Name>
+      <Name>Ia</Name>
       <Alias>当前A相电流/电压值</Alias>
       <Authority>R</Authority>
       <ShowType>1</ShowType>
@@ -2022,7 +2112,7 @@
     </Item>
     <Item>
       <Address>600A</Address>
-      <Name>TripIb_1</Name>
+      <Name>Ib</Name>
       <Alias>当前B相电流值</Alias>
       <Authority>R</Authority>
       <ShowType>1</ShowType>
@@ -2031,7 +2121,7 @@
     </Item>
     <Item>
       <Address>600B</Address>
-      <Name>TripIc_1</Name>
+      <Name>Ic</Name>
       <Alias>当前C相电流值</Alias>
       <Authority>R</Authority>
       <ShowType>1</ShowType>
@@ -2040,7 +2130,7 @@
     </Item>
     <Item>
       <Address>600C</Address>
-      <Name>TripIN_1</Name>
+      <Name>IN</Name>
       <Alias>当前N相电流值</Alias>
       <Authority>R</Authority>
       <ShowType>1</ShowType>
@@ -2048,55 +2138,61 @@
       <Extra>1</Extra>
     </Item>
   </Zone>
-  <Zone length="9" address="7000" alias="报警记录参数">
+  <Zone length="9" address="7000" alias="报警记录参数(7000)" offset="0">
     <Item>
       <Address>7000</Address>
-      <Name>AlarmType_1</Name>
+      <Name>Type</Name>
       <Alias>报警故障类型</Alias>
       <Authority>R</Authority>
-      <ShowType>1</ShowType>
+      <ShowType>2</ShowType>
       <Unit>/</Unit>
-      <Extra>1</Extra>
+      <Extra>71_接地故障_69_漏电故障_117_电流不平衡故障_85_电压不平衡故障_118_欠压故障_86_过压故障_102_欠频故障_70_过频故障_82_逆功率故障_80_相序故障_68_需用电流故障</Extra>
+      <Influences>
+        <Influence>7005/-1/0_71_Ir_69_Ir_117_Ir_68_Ir_86_Ur_118_Ur_85_Ur_70_Fr_102_Fr_82_Pr_80_Phase;1_71_A_69_mA_117_%_68_A_86_V_118_V_85_%_70_Hz_102_Hz_82_kW_80_-;2_71_1_69_1_117_100_68_1_86_1_118_1_85_100_70_100_102_100_82_1_80_1</Influence>
+        <Influence>7006/-1/1_71_ms_69_ms_117_ms_68_s_86_ms_118_ms_85_ms_70_s_102_s_82_ms_80_ms;2_71_1_69_1_117_0.1_68_1_86_0.1_118_0.1_85_0.1_70_100_102_100_82_0.1_80_0.1</Influence>
+        <Influence>7007/-1/0_71_I_69_I_117_I_68_I_86_U_118_U_85_U_70_F_102_F_82_P_80_Phase;1_71_A_69_mA_117_%_68_A_86_V_118_V_85_%_70_Hz_102_Hz_82_kW_80_-;2_71_1_69_1_117_100_68_1_86_1_118_1_85_100_70_100_102_100_82_1_80_1</Influence>
+        <Influence>7008/-1/1_71_ms_69_ms_117_ms_68_s_86_ms_118_ms_85_ms_70_s_102_s_82_ms_80_ms;2_71_1_69_1_117_0.1_68_1_86_0.1_118_0.1_85_0.1_70_100_102_100_82_0.1_80_0.1</Influence>
+      </Influences>
     </Item>
     <Item>
       <Address>7001</Address>
-      <Name>AlarmPhase_1</Name>
+      <Name>Phase</Name>
       <Alias>报警相极</Alias>
       <Authority>R</Authority>
-      <ShowType>1</ShowType>
+      <ShowType>2</ShowType>
       <Unit>/</Unit>
-      <Extra>1</Extra>
+      <Extra>65_A相_66_B相_67_C相_78_N相</Extra>
     </Item>
     <Item>
       <Address>7002</Address>
-      <Name>AlarmTimeH_1</Name>
+      <Name>YY MM</Name>
       <Alias>报警时间（年、月）</Alias>
       <Authority>R</Authority>
-      <ShowType>1</ShowType>
+      <ShowType>0</ShowType>
       <Unit>/</Unit>
-      <Extra>1</Extra>
+      <Extra></Extra>
     </Item>
     <Item>
       <Address>7003</Address>
-      <Name>AlarmTimeM_1</Name>
+      <Name>DD HH</Name>
       <Alias>报警时间（日、时）</Alias>
       <Authority>R</Authority>
-      <ShowType>1</ShowType>
+      <ShowType>0</ShowType>
       <Unit>/</Unit>
-      <Extra>1</Extra>
+      <Extra></Extra>
     </Item>
     <Item>
       <Address>7004</Address>
-      <Name>AlarmTimeL_1</Name>
+      <Name>mm ss</Name>
       <Alias>报警时间（分、秒）</Alias>
       <Authority>R</Authority>
-      <ShowType>1</ShowType>
+      <ShowType>0</ShowType>
       <Unit>/</Unit>
-      <Extra>1</Extra>
+      <Extra></Extra>
     </Item>
     <Item>
       <Address>7005</Address>
-      <Name>AlarmIr_1</Name>
+      <Name>Ir</Name>
       <Alias>当前整定电流值</Alias>
       <Authority>R</Authority>
       <ShowType>1</ShowType>
@@ -2105,7 +2201,7 @@
     </Item>
     <Item>
       <Address>7006</Address>
-      <Name>AlarmTr_1</Name>
+      <Name>Tr</Name>
       <Alias>当前整定时间值</Alias>
       <Authority>R</Authority>
       <ShowType>1</ShowType>
@@ -2114,7 +2210,7 @@
     </Item>
     <Item>
       <Address>7007</Address>
-      <Name>AlarmI_1</Name>
+      <Name>I</Name>
       <Alias>当前故障电流值</Alias>
       <Authority>R</Authority>
       <ShowType>1</ShowType>
@@ -2123,7 +2219,7 @@
     </Item>
     <Item>
       <Address>7008</Address>
-      <Name>AlarmT_1</Name>
+      <Name>T</Name>
       <Alias>报警延时时间</Alias>
       <Authority>R</Authority>
       <ShowType>1</ShowType>
@@ -2131,19 +2227,22 @@
       <Extra>1</Extra>
     </Item>
   </Zone>
-  <Zone length="5" address="8000" alias="自诊断记录参数">
+  <Zone length="5" address="8000" alias="自诊断记录参数(8000)" offset="0">
     <Item>
       <Address>8000</Address>
-      <Name>ErrorType_1</Name>
+      <Name>Type</Name>
       <Alias>自诊断故障类型</Alias>
       <Authority>R</Authority>
-      <ShowType>1</ShowType>
+      <ShowType>2</ShowType>
       <Unit>/</Unit>
-      <Extra>1</Extra>
+      <Extra>67_触头磨损率_116_超温_65_存储器故障_76_过载_83_短路_73_瞬时_71_接地_69_漏电_77_MCR_72_HSISC_90_ZSI_68_需用电流_117_电流不平衡_85_电压不平衡_118_欠压_86_过压_102_欠频_70_过频_82_逆功率_80_相序_84_试验</Extra>
+      <Influences>
+        <Influence>8001/-1/0_67_磨损率_116_超温_65_存储器故障_76_故障电流_83_故障电流_73_故障电流_71_故障电流_69_故障电流_77_故障电流_72_故障电流_90_故障电流_68_故障电流_117_故障电流_85_故障电压_118_故障电压_86_故障电压_102_故障频率_70_故障频率_82_故障功率_80_故障相序_84_-;1_67_%_116_℃_65_-_76_A_83_A_73_A_71_A_69_mA_77_A_72_kA_90_A_68_A_117_%_85_%_118_V_86_V_102_Hz_70_Hz_82_kW_80_-_84_-;2_67_1_116_10_65_1_76_1_83_1_73_1_71_1_69_1_77_1_72_1_90_1_68_1_117_100_85_100_118_1_86_1_102_100_70_100_82_1_80_1_84_1</Influence>
+      </Influences>
     </Item>
     <Item>
       <Address>8001</Address>
-      <Name>ErrorInfo</Name>
+      <Name>Info</Name>
       <Alias>自诊断对象参数</Alias>
       <Authority>R</Authority>
       <ShowType>1</ShowType>
@@ -2152,83 +2251,83 @@
     </Item>
     <Item>
       <Address>8002</Address>
-      <Name>ErrorTimeH_1</Name>
+      <Name>YY MM</Name>
       <Alias>自诊断故障时间   （年、月）</Alias>
       <Authority>R</Authority>
-      <ShowType>1</ShowType>
+      <ShowType>0</ShowType>
       <Unit>/</Unit>
-      <Extra>1</Extra>
+      <Extra></Extra>
     </Item>
     <Item>
       <Address>8003</Address>
-      <Name>ErrorTimeM_1</Name>
+      <Name>DD HH</Name>
       <Alias>自诊断故障时间   （日、时）</Alias>
       <Authority>R</Authority>
-      <ShowType>1</ShowType>
+      <ShowType>0</ShowType>
       <Unit>/</Unit>
-      <Extra>1</Extra>
+      <Extra></Extra>
     </Item>
     <Item>
       <Address>8004</Address>
-      <Name>ErrorTimeL_1</Name>
+      <Name>mm ss</Name>
       <Alias>自诊断故障时间   （分、秒）</Alias>
       <Authority>R</Authority>
-      <ShowType>1</ShowType>
+      <ShowType>0</ShowType>
       <Unit>/</Unit>
-      <Extra>1</Extra>
+      <Extra></Extra>
     </Item>
   </Zone>
-  <Zone length="5" address="9000" alias="变位记录参数">
+  <Zone length="5" address="9000" alias="变位记录参数(9000)" offset="0">
     <Item>
       <Address>9000</Address>
-      <Name>StatusType_1</Name>
+      <Name>Type</Name>
       <Alias>变位记录类型</Alias>
       <Authority>R</Authority>
-      <ShowType>1</ShowType>
+      <ShowType>2</ShowType>
       <Unit>/</Unit>
-      <Extra>1</Extra>
+      <Extra>32_分闸_67_合闸</Extra>
     </Item>
     <Item>
       <Address>9001</Address>
-      <Name>StatusInfo</Name>
+      <Name>Info</Name>
       <Alias>变位记录参数</Alias>
       <Authority>R</Authority>
-      <ShowType>1</ShowType>
+      <ShowType>2</ShowType>
       <Unit>/</Unit>
-      <Extra>1</Extra>
+      <Extra>76_本地_69_故障_84_试验_82_远程</Extra>
     </Item>
     <Item>
       <Address>9002</Address>
-      <Name>StatusTimeH_1</Name>
+      <Name>YY MM</Name>
       <Alias>变位记录时间   （年、月）</Alias>
       <Authority>R</Authority>
-      <ShowType>1</ShowType>
+      <ShowType>0</ShowType>
       <Unit>/</Unit>
-      <Extra>1</Extra>
+      <Extra></Extra>
     </Item>
     <Item>
       <Address>9003</Address>
-      <Name>StatusTimeM_1</Name>
+      <Name>DD HH</Name>
       <Alias>变位记录时间   （日、时）</Alias>
       <Authority>R</Authority>
-      <ShowType>1</ShowType>
+      <ShowType>0</ShowType>
       <Unit>/</Unit>
-      <Extra>1</Extra>
+      <Extra></Extra>
     </Item>
     <Item>
       <Address>9004</Address>
-      <Name>StatusTimeL_1</Name>
+      <Name>mm ss</Name>
       <Alias>变位记录时间   （分、秒）</Alias>
       <Authority>R</Authority>
-      <ShowType>1</ShowType>
+      <ShowType>0</ShowType>
       <Unit>/</Unit>
-      <Extra>1</Extra>
+      <Extra></Extra>
     </Item>
   </Zone>
-  <Zone length="15" address="A000" alias="调整系数参数">
+  <Zone length="15" address="A000" alias="调整系数参数(A000)">
     <Item>
       <Address>A000</Address>
-      <Name>AdjustIa</Name>
+      <Name>Ia</Name>
       <Alias>Ia调整系数</Alias>
       <Authority>R</Authority>
       <ShowType>1</ShowType>
@@ -2237,7 +2336,7 @@
     </Item>
     <Item>
       <Address>A001</Address>
-      <Name>AdjustIb</Name>
+      <Name>Ib</Name>
       <Alias>Ib调整系数</Alias>
       <Authority>R</Authority>
       <ShowType>1</ShowType>
@@ -2246,7 +2345,7 @@
     </Item>
     <Item>
       <Address>A002</Address>
-      <Name>AdjustIc</Name>
+      <Name>Ic</Name>
       <Alias>Ic调整系数</Alias>
       <Authority>R</Authority>
       <ShowType>1</ShowType>
@@ -2255,7 +2354,7 @@
     </Item>
     <Item>
       <Address>A003</Address>
-      <Name>AdjustIn</Name>
+      <Name>In</Name>
       <Alias>In调整系数</Alias>
       <Authority>R</Authority>
       <ShowType>1</ShowType>
@@ -2264,7 +2363,7 @@
     </Item>
     <Item>
       <Address>A004</Address>
-      <Name>AdjustIgf</Name>
+      <Name>Igf</Name>
       <Alias>Igf调整系数</Alias>
       <Authority>R</Authority>
       <ShowType>1</ShowType>
@@ -2273,7 +2372,7 @@
     </Item>
     <Item>
       <Address>A005</Address>
-      <Name>AdjusUan</Name>
+      <Name>Uan</Name>
       <Alias>Uan调整系数</Alias>
       <Authority>R</Authority>
       <ShowType>1</ShowType>
@@ -2282,7 +2381,7 @@
     </Item>
     <Item>
       <Address>A006</Address>
-      <Name>AdjusUbn</Name>
+      <Name>Ubn</Name>
       <Alias>Ubn调整系数</Alias>
       <Authority>R</Authority>
       <ShowType>1</ShowType>
@@ -2291,7 +2390,7 @@
     </Item>
     <Item>
       <Address>A007</Address>
-      <Name>AdjusUcn</Name>
+      <Name>Ucn</Name>
       <Alias>Ucn调整系数</Alias>
       <Authority>R</Authority>
       <ShowType>1</ShowType>
@@ -2300,7 +2399,7 @@
     </Item>
     <Item>
       <Address>A008</Address>
-      <Name>AdjusUab</Name>
+      <Name>Uab</Name>
       <Alias>Uab调整系数</Alias>
       <Authority>R</Authority>
       <ShowType>1</ShowType>
@@ -2309,7 +2408,7 @@
     </Item>
     <Item>
       <Address>A009</Address>
-      <Name>AdjusUbc</Name>
+      <Name>Ubc</Name>
       <Alias>Ubc调整系数</Alias>
       <Authority>R</Authority>
       <ShowType>1</ShowType>
@@ -2318,7 +2417,7 @@
     </Item>
     <Item>
       <Address>A00A</Address>
-      <Name>AdjusUca</Name>
+      <Name>Uca</Name>
       <Alias>Uca调整系数</Alias>
       <Authority>R</Authority>
       <ShowType>1</ShowType>
@@ -2327,7 +2426,7 @@
     </Item>
     <Item>
       <Address>A00B</Address>
-      <Name>AdjustIa</Name>
+      <Name>Ia(H)</Name>
       <Alias>Ia大电流调整系数</Alias>
       <Authority>R</Authority>
       <ShowType>1</ShowType>
@@ -2336,7 +2435,7 @@
     </Item>
     <Item>
       <Address>A00C</Address>
-      <Name>AdjustIb</Name>
+      <Name>Ib(H)</Name>
       <Alias>Ib大电流调整系数</Alias>
       <Authority>R</Authority>
       <ShowType>1</ShowType>
@@ -2345,7 +2444,7 @@
     </Item>
     <Item>
       <Address>A00D</Address>
-      <Name>AdjustIc</Name>
+      <Name>Ic(H)</Name>
       <Alias>Ic大电流调整系数</Alias>
       <Authority>R</Authority>
       <ShowType>1</ShowType>
@@ -2354,7 +2453,7 @@
     </Item>
     <Item>
       <Address>A00E</Address>
-      <Name>AdjustIn</Name>
+      <Name>In(H)</Name>
       <Alias>In大电流调整系数</Alias>
       <Authority>R</Authority>
       <ShowType>1</ShowType>
@@ -2362,33 +2461,33 @@
       <Extra>1</Extra>
     </Item>
   </Zone>
-  <Zone length="3" address="B000" alias="调整时钟参数">
+  <Zone length="3" address="B000" alias="调整时钟参数(B000)">
     <Item>
       <Address>B000</Address>
-      <Name>ClockYearMonth</Name>
+      <Name>YY MM</Name>
       <Alias>高字节：年   /  低字节：月</Alias>
       <Authority>RW</Authority>
-      <ShowType>1</ShowType>
+      <ShowType>0</ShowType>
       <Unit>/</Unit>
-      <Extra>1</Extra>
+      <Extra></Extra>
     </Item>
     <Item>
       <Address>B001</Address>
-      <Name>ClockDateHour</Name>
+      <Name>DD HH</Name>
       <Alias>高字节：日   /  低字节：时</Alias>
       <Authority>RW</Authority>
-      <ShowType>1</ShowType>
+      <ShowType>0</ShowType>
       <Unit>/</Unit>
-      <Extra>1</Extra>
+      <Extra></Extra>
     </Item>
     <Item>
       <Address>B002</Address>
-      <Name>ClockMinSecond</Name>
+      <Name>mm ss</Name>
       <Alias>高字节：分   /  低字节：秒</Alias>
       <Authority>RW</Authority>
-      <ShowType>1</ShowType>
+      <ShowType>0</ShowType>
       <Unit>/</Unit>
-      <Extra>1</Extra>
+      <Extra></Extra>
     </Item>
   </Zone>
 </Device>

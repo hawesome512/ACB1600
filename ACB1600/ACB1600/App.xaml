@@ -149,7 +149,7 @@
                                 Content="{TemplateBinding SelectionBoxItem}"
                                 ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
                                 ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
-                                Margin="10,3,30,3"
+                                Margin="3"
                                 VerticalAlignment="Center"
                                 HorizontalAlignment="Center"
                                 />
@@ -158,7 +158,7 @@
                                 Template="{StaticResource ComboBoxTextBox}"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center"
-                                Margin="3,3,23,3"
+                                Margin="3"
                                 Focusable="True"                               
                                 Visibility="Hidden"
                                 IsReadOnly="{TemplateBinding IsReadOnly}"/>

@@ -1,0 +1,16 @@
+E:\My Work\acb1600\ACB1600\Chart\bin\Release\ChartDemo.exe.config
+E:\My Work\acb1600\ACB1600\Chart\bin\Release\ChartDemo.exe
+E:\My Work\acb1600\ACB1600\Chart\bin\Release\ChartDemo.pdb
+E:\My Work\acb1600\ACB1600\Chart\obj\Release\Chart.csprojResolveAssemblyReference.cache
+E:\My Work\acb1600\ACB1600\Chart\obj\Release\UserControl1.baml
+E:\My Work\acb1600\ACB1600\Chart\obj\Release\MainWindow.g.cs
+E:\My Work\acb1600\ACB1600\Chart\obj\Release\UserControl1.g.cs
+E:\My Work\acb1600\ACB1600\Chart\obj\Release\App.g.cs
+E:\My Work\acb1600\ACB1600\Chart\obj\Release\ChartDemo_MarkupCompile.cache
+E:\My Work\acb1600\ACB1600\Chart\obj\Release\ChartDemo_MarkupCompile.lref
+E:\My Work\acb1600\ACB1600\Chart\obj\Release\MainWindow.baml
+E:\My Work\acb1600\ACB1600\Chart\obj\Release\ChartDemo.g.resources
+E:\My Work\acb1600\ACB1600\Chart\obj\Release\ChartDemo.Properties.Resources.resources
+E:\My Work\acb1600\ACB1600\Chart\obj\Release\Chart.csproj.GenerateResource.Cache
+E:\My Work\acb1600\ACB1600\Chart\obj\Release\ChartDemo.exe
+E:\My Work\acb1600\ACB1600\Chart\obj\Release\ChartDemo.pdb
