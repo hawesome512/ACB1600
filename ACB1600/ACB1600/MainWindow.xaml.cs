@@ -53,7 +53,7 @@ namespace ACB1600
                         if (ports.Contains(strCom))
                         {
                                 cbox_com.SelectedValue = strCom;
-                                com = new Com(ComType.SP, strCom,comRepeat);
+                                com = new Com(ComType.SP, strCom, comRepeat);
                         }
                         string strAddress = Tools.GetConfig("Address");
                         comAddress = byte.Parse(strAddress);
@@ -187,7 +187,7 @@ namespace ACB1600
                         if (int.TryParse(box.Text, out nRecord))
                         {
                                 int length = zoneList[zoneIndex].Count;
-                                read(nA, length,false,nRecord);
+                                read(nA, length, false, nRecord);
                         }
                 }
 
@@ -371,79 +371,83 @@ namespace ACB1600
                 }
                 #endregion
 
+                object threadLock = new object();
                 #region 通信
-                private void read(int address, int length, bool readArray = false,int offset=0)
+                private void read(int address, int length, bool readArray = false, int offset = 0)
                 {
                         Task.Factory.StartNew(() =>
                         {
-                                int realAddr = address + offset * length;
-                                byte[] snd = new byte[6];
-                                snd[0] = comAddress;
-                                snd[1] = 0x3;
-                                snd[2] = (byte)(realAddr / 256);
-                                snd[3] = (byte)(realAddr % 256);
-                                snd[4] = (byte)(length / 256);
-                                snd[5] = (byte)(length % 256);
-                                byte[] rcv = com.Execute(snd);
-                                this.Dispatcher.Invoke(new Action(() =>
+                                lock (threadLock)
                                 {
-                                        if (rcv.Length == length * 2)
+                                        int realAddr = address + offset * length;
+                                        byte[] snd = new byte[6];
+                                        snd[0] = comAddress;
+                                        snd[1] = 0x3;
+                                        snd[2] = (byte)(realAddr / 256);
+                                        snd[3] = (byte)(realAddr % 256);
+                                        snd[4] = (byte)(length / 256);
+                                        snd[5] = (byte)(length % 256);
+                                        byte[] rcv = com.Execute(snd);
+                                        this.Dispatcher.Invoke(new Action(() =>
                                         {
-                                                lbl_msg.Content = string.Format("读取：{0:X4}，位数：{1}【成功】{2}", address, length, DateTime.Now.ToLongTimeString());
-                                                if (readArray)
+                                                if (rcv.Length == length * 2)
                                                 {
-                                                        Control tbox = Tools.GetChild<Control>(grid_content, "Box" + address);
-                                                        Node node = tbox.Tag as Node;
-                                                        int[] data = (int[])typeof(ComConverter).GetMethod("CvtR" + node.ShowType).Invoke(cvt, new object[] { rcv, node.Extra });
-                                                        detail.showChart(data);
-                                                }
-                                                else
-                                                {
-                                                        for (int i = 0; i < length; i++)
+                                                        lbl_msg.Content = string.Format("读取：{0:X4}，位数：{1}【成功】{2}", address, length, DateTime.Now.ToLongTimeString());
+                                                        if (readArray)
                                                         {
-                                                                Control box = Tools.GetChild<Control>(grid_content, "Box" + (address + i));
-                                                                byte[] source = new byte[] { rcv[2 * i], rcv[2 * i + 1] };
-                                                                Node node = box.Tag as Node;
-                                                                int nResult = source[0] * 256 + source[1];
-                                                                string result = typeof(ComConverter).GetMethod("CvtR" + node.ShowType).Invoke(cvt, new object[] { source, node.Extra }).ToString();
-                                                                AutoBox.setText(box, result);
-                                                                if (node.Influences != null)
+                                                                Control tbox = Tools.GetChild<Control>(grid_content, "Box" + address);
+                                                                Node node = tbox.Tag as Node;
+                                                                int[] data = (int[])typeof(ComConverter).GetMethod("CvtR" + node.ShowType).Invoke(cvt, new object[] { rcv, node.Extra });
+                                                                detail.showChart(data);
+                                                        }
+                                                        else
+                                                        {
+                                                                for (int i = 0; i < length; i++)
                                                                 {
-                                                                        foreach (Influence inf in node.Influences)
+                                                                        Control box = Tools.GetChild<Control>(grid_content, "Box" + (address + i));
+                                                                        byte[] source = new byte[] { rcv[2 * i], rcv[2 * i + 1] };
+                                                                        Node node = box.Tag as Node;
+                                                                        int nResult = source[0] * 256 + source[1];
+                                                                        string result = typeof(ComConverter).GetMethod("CvtR" + node.ShowType).Invoke(cvt, new object[] { source, node.Extra }).ToString();
+                                                                        AutoBox.setText(box, result);
+                                                                        if (node.Influences != null)
                                                                         {
-                                                                                inf.executeInfluence(grid_content, nResult, AutoBox.getText(box));
+                                                                                foreach (Influence inf in node.Influences)
+                                                                                {
+                                                                                        inf.executeInfluence(grid_content, nResult, AutoBox.getText(box));
+                                                                                }
                                                                         }
-                                                                }
-                                                                //处理一些没有规律特殊的节点
-                                                                if (node.Address == 0x7007 || node.Address == 0x6007)
-                                                                {
-                                                                        Control box0 = Tools.GetChild<Control>(grid_content, "Box" + (node.Address - 7));
-                                                                        if (AutoBox.getText(box0) == "相序")
+                                                                        //处理一些没有规律特殊的节点
+                                                                        if (node.Address == 0x7007 || node.Address == 0x6007)
                                                                         {
-                                                                                AutoBox.setText(box, nResult == 0 ? "逆序" : "正序");
+                                                                                Control box0 = Tools.GetChild<Control>(grid_content, "Box" + (node.Address - 7));
+                                                                                if (AutoBox.getText(box0) == "相序")
+                                                                                {
+                                                                                        AutoBox.setText(box, nResult == 0 ? "逆序" : "正序");
+                                                                                }
                                                                         }
-                                                                }
-                                                                else if (node.Address == 0x8001)
-                                                                {
-                                                                        Control box0x8000 = Tools.GetChild<Control>(grid_content, "Box" + (0x8000));
-                                                                        string value = AutoBox.getText(box0x8000);
-                                                                        if (value == "存储器故障")
+                                                                        else if (node.Address == 0x8001)
                                                                         {
-                                                                                AutoBox.setText(box, string.Format("0x{0:X4}", nResult));
-                                                                        }
-                                                                        else if (value == "相序")
-                                                                        {
-                                                                                AutoBox.setText(box, nResult == 0 ? "逆序" : "正序");
+                                                                                Control box0x8000 = Tools.GetChild<Control>(grid_content, "Box" + (0x8000));
+                                                                                string value = AutoBox.getText(box0x8000);
+                                                                                if (value == "存储器故障")
+                                                                                {
+                                                                                        AutoBox.setText(box, string.Format("0x{0:X4}", nResult));
+                                                                                }
+                                                                                else if (value == "相序")
+                                                                                {
+                                                                                        AutoBox.setText(box, nResult == 0 ? "逆序" : "正序");
+                                                                                }
                                                                         }
                                                                 }
                                                         }
                                                 }
-                                        }
-                                        else
-                                        {
-                                                lbl_msg.Content = string.Format("读取：{0:X4}，位数：{1}【失败】{2}", address, length, DateTime.Now.ToLongTimeString());
-                                        }
-                                }));
+                                                else
+                                                {
+                                                        lbl_msg.Content = string.Format("读取：{0:X4}，位数：{1}【失败】{2}", address, length, DateTime.Now.ToLongTimeString());
+                                                }
+                                        }));
+                                }
                         });
                 }
 
@@ -553,11 +557,11 @@ namespace ACB1600
                         img_setting.Source = Tools.GetImgSource("Images/previous.png", "ACB1600");
                         Tools.SetConfig("COM", cbox_com.Text);
                         Tools.SetConfig("Address", tbox_address.Text);
-                        Tools.SetConfig("Repeat",tbox_repeat.Text);
+                        Tools.SetConfig("Repeat", tbox_repeat.Text);
                         comAddress = byte.Parse(tbox_address.Text);
                         comRepeat = byte.Parse(tbox_repeat.Text);
                         com.Dispose();
-                        com = new Com(ComType.SP, cbox_com.Text,comRepeat);
+                        com = new Com(ComType.SP, cbox_com.Text, comRepeat);
                 }
                 #endregion
         }
